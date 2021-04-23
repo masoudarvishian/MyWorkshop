@@ -11,13 +11,8 @@ class Player
 {
 public:
 
-	Player() : m_money{ START_MONEY }
-	{
-	}
-
-	~Player()
-	{
-	}
+	Player();
+	~Player();
 
 	void BuyTool(Tool* tool);
 

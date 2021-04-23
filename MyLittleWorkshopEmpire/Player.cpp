@@ -1,5 +1,13 @@
 #include "Player.h"
 
+Player::Player() : m_money{ START_MONEY }
+{}
+
+Player::~Player()
+{
+    std::cout << "player is destroyed!\n";
+}
+
 void Player::BuyTool(Tool* tool)
 {
     int price{ tool->GetPrice() };
