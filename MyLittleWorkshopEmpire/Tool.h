@@ -2,6 +2,7 @@
 #define TOOL_H
 
 #include <string>
+#include <iostream>
 
 constexpr int MAX_WEAR_COUNT = 5;
 class ToolManager;
@@ -14,6 +15,7 @@ public:
 
 	~Tool()
 	{
+		std::cout << "tool: " << m_name << " has destroyed" << std::endl;
 	}
 
 	std::string GetName() const noexcept;

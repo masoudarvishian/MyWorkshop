@@ -3,6 +3,7 @@
 
 #include <string>
 #include <list>
+#include <memory>
 #include "Malfunction.h"
 
 class Vehicle
@@ -10,17 +11,15 @@ class Vehicle
 public:
     Vehicle(const char* type) noexcept;
 
-    ~Vehicle()
-    {
-    }
+    ~Vehicle();
 
-    void AddMalfunction(Malfunction* value) noexcept;
+    void AddMalfunction(std::shared_ptr<Malfunction> value) noexcept;
     std::string GetType() const noexcept;
-    std::list<Malfunction*> GetListOfMalfunction() const noexcept;
+    std::list<std::shared_ptr<Malfunction>> GetListOfMalfunction() const noexcept;
 
 private:
     std::string m_type;
-    std::list<Malfunction*> m_malfunctions;
+    std::list<std::shared_ptr<Malfunction>> m_malfunctions;
 };
 
 #endif

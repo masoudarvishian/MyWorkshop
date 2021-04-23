@@ -12,9 +12,7 @@ public:
        will consider this as final reward not a cost that will reduce from player! */
     Malfunction(const char* name, const std::list<Tool*> tools, const int rewardAmount) noexcept;
 
-    ~Malfunction()
-    {
-    }
+    ~Malfunction();
 
     std::string GetName() const noexcept;
     int GetFixCosts() const noexcept;

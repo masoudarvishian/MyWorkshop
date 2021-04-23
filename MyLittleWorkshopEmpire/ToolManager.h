@@ -8,33 +8,33 @@
 class ToolManager
 {
 public:
-    
-    // it's singleton, and cannot have copy constructor and operator=
-    ToolManager(ToolManager& other) = delete;
-    void operator=(const ToolManager&) = delete;
 
-    // default constructor
-    ToolManager() {}
+	// it's singleton, and cannot have copy constructor and operator=
+	ToolManager(ToolManager& other) = delete;
+	void operator=(const ToolManager&) = delete;
 
-    // destructor
-    ~ToolManager() {}
+	// default constructor
+	ToolManager() {}
 
-    // singleton pattern
-    static ToolManager* GetInstance() noexcept;
+	// destructor
+	~ToolManager();
 
-    void AddTool(Tool* tool);
+	// singleton pattern
+	static ToolManager* GetInstance() noexcept;
 
-    Tool* FindToolByName(std::string name) const;
+	void AddTool(std::shared_ptr<Tool> tool);
 
-    Tool* GetToolByIndex(int toolIndex);
+	Tool* FindToolByName(std::string name) const;
 
-    void PrintToolInShop() const noexcept;
+	Tool* GetToolByIndex(int toolIndex);
+
+	void PrintToolInShop() const noexcept;
 
 private:
-    std::map<int, Tool*> m_tools;
+	std::map<int, std::shared_ptr<Tool>> m_tools;
 
-    // singleton
-    static ToolManager* _instance;
+	// singleton
+	static ToolManager* _instance;
 };
 
 

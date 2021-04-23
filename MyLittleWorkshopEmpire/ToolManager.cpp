@@ -2,6 +2,12 @@
 
 ToolManager* ToolManager::_instance{ nullptr };
 
+ToolManager::~ToolManager()
+{
+	_instance = nullptr;
+	std::cout << "ToolManager is destroyed!\n";
+}
+
 ToolManager* ToolManager::GetInstance() noexcept
 {
 	if (_instance == nullptr)
@@ -11,7 +17,7 @@ ToolManager* ToolManager::GetInstance() noexcept
 	return _instance;
 }
 
-void ToolManager::AddTool(Tool* tool)
+void ToolManager::AddTool(std::shared_ptr<Tool> tool)
 {
 	const int nextIndex = m_tools.size();
 	m_tools[nextIndex] = tool;
@@ -23,10 +29,10 @@ Tool* ToolManager::FindToolByName(std::string name) const
 
 	for (auto iter(m_tools.begin()); iter != m_tools.end(); iter++)
 	{
-		Tool* tool{ iter->second };
+		auto tool{ iter->second };
 		if (tool->GetName() == name)
 		{
-			found = tool;
+			found = tool.get();
 			break;
 		}
 	}
@@ -36,7 +42,7 @@ Tool* ToolManager::FindToolByName(std::string name) const
 
 Tool* ToolManager::GetToolByIndex(int toolIndex)
 {
-	return m_tools[toolIndex];
+	return m_tools[toolIndex].get();
 }
 
 void ToolManager::PrintToolInShop() const noexcept
@@ -45,7 +51,7 @@ void ToolManager::PrintToolInShop() const noexcept
 	for (auto iter(m_tools.begin()); iter != m_tools.end(); iter++)
 	{
 		int index{ iter->first };
-		Tool* tool{ iter->second };
+		Tool* tool{ iter->second.get() };
 		printf("  - %d: %s (%d$)\n", index, tool->GetName().c_str(), tool->GetPrice());
 	}
 }
