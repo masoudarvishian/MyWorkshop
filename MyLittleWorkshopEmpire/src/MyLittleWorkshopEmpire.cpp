@@ -119,6 +119,12 @@ int main()
 		std::cout << "\nWhat do you want to do now? ";
 		std::getline(std::cin, command);
 
+		if (command.empty())
+		{
+			std::cout << "Wrong Input! press 'h' for more information.\n";
+			continue;
+		}
+
 		switch (command.at(0))
 		{
 		case 'h':   // help, listing all commands
@@ -158,6 +164,7 @@ int main()
 		}
 		break;
 		default:
+			std::cout << "Wrong Input! press 'h' for more information.\n";
 			break;
 		}
 	}
