@@ -19,11 +19,11 @@ void ToolManager::AddTool(Tool* tool)
 
 Tool* ToolManager::FindToolByName(std::string name) const
 {
-	Tool* found = 0;
+	Tool* found{ 0 };
 
 	for (auto iter(m_tools.begin()); iter != m_tools.end(); iter++)
 	{
-		Tool* tool = iter->second;
+		Tool* tool{ iter->second };
 		if (tool->GetName() == name)
 		{
 			found = tool;
@@ -44,8 +44,8 @@ void ToolManager::PrintToolInShop() const noexcept
 	printf("  Shop content:\n");
 	for (auto iter(m_tools.begin()); iter != m_tools.end(); iter++)
 	{
-		int index = iter->first;;
-		Tool* tool = iter->second;
+		int index{ iter->first };
+		Tool* tool{ iter->second };
 		printf("  - %d: %s (%d$)\n", index, tool->GetName().c_str(), tool->GetPrice());
 	}
 }

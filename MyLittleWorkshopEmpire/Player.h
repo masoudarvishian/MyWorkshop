@@ -1,11 +1,11 @@
-#pragma once
+#ifndef PLAYER_H
+#define PLAYER_H
 
 #include "Tool.h"
 #include <string>
 #include <map>
 
 constexpr int START_MONEY = 200;
-
 
 class Player
 {
@@ -30,3 +30,4 @@ private:
 	std::map<Tool*, int> m_usableTools;
 };
 
+#endif

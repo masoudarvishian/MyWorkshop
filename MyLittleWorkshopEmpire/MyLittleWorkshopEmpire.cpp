@@ -10,7 +10,7 @@
 
 int main()
 {
-	Player* player = new Player();
+	Player* player{ new Player() };
 
 	std::list<Vehicle*> vehicles;
 
@@ -99,7 +99,7 @@ int main()
 	vehicles.push_back(compactCar);
 	vehicles.push_back(racingCar);
 
-	bool gameIsRunning = true;
+	bool gameIsRunning{ true };
 	std::string command;
 
 	std::cout << "Hello Player!\nYou are about to lead your own Workshop.\n";

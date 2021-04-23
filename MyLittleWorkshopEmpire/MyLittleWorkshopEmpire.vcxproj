@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Malfunction.cpp" />
     <ClCompile Include="MyLittleWorkshopEmpire.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Tool.cpp" />
@@ -146,6 +147,7 @@
     <ClCompile Include="Vehicle.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Malfunction.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Tool.h" />
     <ClInclude Include="ToolManager.h" />

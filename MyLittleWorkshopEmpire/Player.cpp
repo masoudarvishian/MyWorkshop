@@ -1,15 +1,14 @@
 #include "Player.h"
 
-
 void Player::BuyTool(Tool* tool)
 {
-    int price = tool->GetPrice();
-    int wearCount = tool->GetMaxWearCount();
+    int price{ tool->GetPrice() };
+    int wearCount{ tool->GetMaxWearCount() };
 
     if (m_money >= price)
     {
         m_money -= price;
-        auto found = m_usableTools.find(tool);
+        auto found{ m_usableTools.find(tool) };
         if (found != m_usableTools.end())
         {
             m_usableTools[tool] = wearCount;
@@ -26,7 +25,7 @@ void Player::BuyTool(Tool* tool)
 
 void Player::InitTool(Tool* tool)
 {
-    int wearCount = tool->GetMaxWearCount();
+    int wearCount{ tool->GetMaxWearCount() };
     m_usableTools[tool] = wearCount;
 }
 
@@ -37,8 +36,8 @@ void Player::PrintInventory()
     for (auto iter(m_usableTools.begin()); iter != m_usableTools.end(); iter++)
     {
         // issue fixed: iter->first should be tool* and iter->second should be int
-        Tool* tool = iter->first;
-        int usageCounter = iter->second;
+        Tool* tool{ iter->first };
+        int usageCounter{ iter->second };
         printf("  - %s x%d\n", tool->GetName().c_str(), usageCounter);
     }
 }
