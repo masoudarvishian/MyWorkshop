@@ -6,6 +6,7 @@
 #include "Vehicle.h"
 #include "Tool.h"
 #include "Player.h"
+#include "ToolManager.h"
 
 int main()
 {

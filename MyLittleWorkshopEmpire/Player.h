@@ -2,6 +2,7 @@
 
 #include "Tool.h"
 #include <string>
+#include <map>
 
 constexpr int START_MONEY = 200;
 
@@ -10,23 +11,22 @@ class Player
 {
 public:
 
-    Player()
-    {
-        m_money = START_MONEY;
-    }
+	Player() : m_money{ START_MONEY }
+	{
+	}
 
-    ~Player()
-    {
-    }
+	~Player()
+	{
+	}
 
-    void BuyTool(Tool* tool);
+	void BuyTool(Tool* tool);
 
-    void InitTool(Tool* tool);
+	void InitTool(Tool* tool);
 
-    void PrintInventory();
+	void PrintInventory();
 
 private:
-    int m_money;
-    std::map<Tool*, int> m_usableTools;
+	int m_money;
+	std::map<Tool*, int> m_usableTools;
 };
 
