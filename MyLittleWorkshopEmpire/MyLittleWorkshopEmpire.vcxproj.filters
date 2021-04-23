@@ -33,7 +33,19 @@
     <ClCompile Include="Malfunction.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CommandManager.cpp">
+    <ClCompile Include="cmd\CommandManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cmd\HelpCommand.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cmd\InventoryCommand.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cmd\ShopCommand.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cmd\BuyToolCommand.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -53,13 +65,25 @@
     <ClInclude Include="Malfunction.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CommandManager.h">
+    <ClInclude Include="cmd\CommandManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Command.h">
+    <ClInclude Include="cmd\Command.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TestCommand.h">
+    <ClInclude Include="cmd\TestCommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cmd\HelpCommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cmd\InventoryCommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cmd\ShopCommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cmd\BuyToolCommand.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -139,7 +139,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CommandManager.cpp" />
+    <ClCompile Include="cmd\BuyToolCommand.cpp" />
+    <ClCompile Include="cmd\CommandManager.cpp" />
+    <ClCompile Include="cmd\HelpCommand.cpp" />
+    <ClCompile Include="cmd\InventoryCommand.cpp" />
+    <ClCompile Include="cmd\ShopCommand.cpp" />
     <ClCompile Include="Malfunction.cpp" />
     <ClCompile Include="MyLittleWorkshopEmpire.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -148,11 +152,15 @@
     <ClCompile Include="Vehicle.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Command.h" />
-    <ClInclude Include="CommandManager.h" />
+    <ClInclude Include="cmd\BuyToolCommand.h" />
+    <ClInclude Include="cmd\Command.h" />
+    <ClInclude Include="cmd\CommandManager.h" />
+    <ClInclude Include="cmd\HelpCommand.h" />
+    <ClInclude Include="cmd\InventoryCommand.h" />
+    <ClInclude Include="cmd\ShopCommand.h" />
     <ClInclude Include="Malfunction.h" />
     <ClInclude Include="Player.h" />
-    <ClInclude Include="TestCommand.h" />
+    <ClInclude Include="cmd\TestCommand.h" />
     <ClInclude Include="Tool.h" />
     <ClInclude Include="ToolManager.h" />
     <ClInclude Include="Vehicle.h" />

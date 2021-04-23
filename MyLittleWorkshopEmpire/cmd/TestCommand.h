@@ -7,12 +7,12 @@
 class TestCommand : public Command
 {
 public:
-	virtual ~TestCommand()
+	virtual ~TestCommand() override
 	{
 		std::cout << "Test Command is destroyed!\n";
 	}
 
-	virtual void execute(std::function<void()> callback)
+	virtual void execute(std::function<void()> callback) override
 	{
 		std::cout << "Test command excecuted!\n";
 

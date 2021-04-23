@@ -8,8 +8,12 @@
 #include "Player.h"
 #include "ToolManager.h"
 #include <vector>
-#include "CommandManager.h"
-#include "TestCommand.h"
+#include "cmd/CommandManager.h"
+#include "cmd/TestCommand.h"
+#include "cmd/HelpCommand.h"
+#include "cmd/InventoryCommand.h"
+#include "cmd/ShopCommand.h"
+#include "cmd/BuyToolCommand.h"
 
 int main()
 {
@@ -118,18 +122,12 @@ int main()
 		{
 		case 'h':   // help, listing all commands
 		{
-			std::cout << "HELP - here are all possible commands you could use:\n";
-			std::cout << "  'i'         Inventory: your amount of Money and your available Tools\n";
-			std::cout << "  'j'         Jobs: a list of available Jobs\n";
-			std::cout << "  'a[index]' Accept a Job: using the index of the Job list. Example: when typing 'a2' you will accept the Job at index 2\n";
-			std::cout << "  's'         Shop: a list of all available Tools and the Price\n";
-			std::cout << "  'b[index]'  Buy a Tool: using the index of the Shop list. Example: when typing 'b0' you will buy the first Tool available in the Shop\n";
-			std::cout << "  'x'         Quit Game\n";
+			cmdManager->add(std::make_shared<HelpCommand>());
 		}
 		break;
 		case 'i':   // inventory
 		{
-			player->PrintInventory();
+			cmdManager->add(std::make_shared<InventoryCommand>(player.get()));
 		}
 		break;
 		case 'j':   // jobs
@@ -138,7 +136,7 @@ int main()
 			break;
 		case 's':   // shop
 		{
-			ToolManager::GetInstance()->PrintToolInShop();
+			cmdManager->add(std::make_shared<ShopCommand>());
 		}
 		break;
 		case 'b':   // buy tool
@@ -148,8 +146,8 @@ int main()
 			{
 				index = std::stoi(command.substr(1, command.length()));
 			}
-			auto toolToBuy = ToolManager::GetInstance()->GetToolByIndex(index);
-			player->BuyTool(toolToBuy);
+
+			cmdManager->add(std::make_shared<BuyToolCommand>(player.get(), index));
 		}
 		break;
 		case 'x':   // quit game
