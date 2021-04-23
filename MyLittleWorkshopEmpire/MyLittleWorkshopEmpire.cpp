@@ -8,9 +8,13 @@
 #include "Player.h"
 #include "ToolManager.h"
 #include <vector>
+#include "CommandManager.h"
+#include "TestCommand.h"
 
 int main()
 {
+	auto cmdManager = std::make_unique<CommandManager>();
+
 	auto player = std::make_unique<Player>();
 
 	std::list<std::shared_ptr<Vehicle>> vehicles;
@@ -21,7 +25,6 @@ int main()
 
 	// issue fixed: jumb cable was $50, but it should be 20$ based on document.
 	ToolManager::GetInstance()->AddTool(std::make_shared<Tool>("Jumper Cables", 20));
-	/////////////////////////////////////////////////////////////////////
 
 	ToolManager::GetInstance()->AddTool(std::make_shared<Tool>("Phase tester", 10));
 	ToolManager::GetInstance()->AddTool(std::make_shared<Tool>("Hammer", 20));
@@ -152,6 +155,7 @@ int main()
 		case 'x':   // quit game
 		{
 			gameIsRunning = false;
+			std::cout << "\n\n=== Memory Mangement Messages ===\n\n";
 		}
 		break;
 		default:
