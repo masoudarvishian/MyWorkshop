@@ -15,75 +15,75 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="MyLittleWorkshopEmpire.cpp">
+    <ClCompile Include="src\MyLittleWorkshopEmpire.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
+    <ClCompile Include="src\Player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Tool.cpp">
+    <ClCompile Include="src\Tool.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Vehicle.cpp">
+    <ClCompile Include="src\Vehicle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ToolManager.cpp">
+    <ClCompile Include="src\ToolManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Malfunction.cpp">
+    <ClCompile Include="src\Malfunction.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="cmd\CommandManager.cpp">
+    <ClCompile Include="src\cmd\CommandManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="cmd\HelpCommand.cpp">
+    <ClCompile Include="src\cmd\HelpCommand.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="cmd\InventoryCommand.cpp">
+    <ClCompile Include="src\cmd\InventoryCommand.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="cmd\ShopCommand.cpp">
+    <ClCompile Include="src\cmd\ShopCommand.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="cmd\BuyToolCommand.cpp">
+    <ClCompile Include="src\cmd\BuyToolCommand.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Vehicle.h">
+    <ClInclude Include="src\Vehicle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Tool.h">
+    <ClInclude Include="src\Tool.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Player.h">
+    <ClInclude Include="src\Player.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ToolManager.h">
+    <ClInclude Include="src\ToolManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Malfunction.h">
+    <ClInclude Include="src\Malfunction.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="cmd\CommandManager.h">
+    <ClInclude Include="src\cmd\CommandManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="cmd\Command.h">
+    <ClInclude Include="src\cmd\Command.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="cmd\TestCommand.h">
+    <ClInclude Include="src\cmd\TestCommand.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="cmd\HelpCommand.h">
+    <ClInclude Include="src\cmd\HelpCommand.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="cmd\InventoryCommand.h">
+    <ClInclude Include="src\cmd\InventoryCommand.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="cmd\ShopCommand.h">
+    <ClInclude Include="src\cmd\ShopCommand.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="cmd\BuyToolCommand.h">
+    <ClInclude Include="src\cmd\BuyToolCommand.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

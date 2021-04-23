@@ -139,31 +139,31 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="cmd\BuyToolCommand.cpp" />
-    <ClCompile Include="cmd\CommandManager.cpp" />
-    <ClCompile Include="cmd\HelpCommand.cpp" />
-    <ClCompile Include="cmd\InventoryCommand.cpp" />
-    <ClCompile Include="cmd\ShopCommand.cpp" />
-    <ClCompile Include="Malfunction.cpp" />
-    <ClCompile Include="MyLittleWorkshopEmpire.cpp" />
-    <ClCompile Include="Player.cpp" />
-    <ClCompile Include="Tool.cpp" />
-    <ClCompile Include="ToolManager.cpp" />
-    <ClCompile Include="Vehicle.cpp" />
+    <ClCompile Include="src\cmd\BuyToolCommand.cpp" />
+    <ClCompile Include="src\cmd\CommandManager.cpp" />
+    <ClCompile Include="src\cmd\HelpCommand.cpp" />
+    <ClCompile Include="src\cmd\InventoryCommand.cpp" />
+    <ClCompile Include="src\cmd\ShopCommand.cpp" />
+    <ClCompile Include="src\Malfunction.cpp" />
+    <ClCompile Include="src\MyLittleWorkshopEmpire.cpp" />
+    <ClCompile Include="src\Player.cpp" />
+    <ClCompile Include="src\Tool.cpp" />
+    <ClCompile Include="src\ToolManager.cpp" />
+    <ClCompile Include="src\Vehicle.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="cmd\BuyToolCommand.h" />
-    <ClInclude Include="cmd\Command.h" />
-    <ClInclude Include="cmd\CommandManager.h" />
-    <ClInclude Include="cmd\HelpCommand.h" />
-    <ClInclude Include="cmd\InventoryCommand.h" />
-    <ClInclude Include="cmd\ShopCommand.h" />
-    <ClInclude Include="Malfunction.h" />
-    <ClInclude Include="Player.h" />
-    <ClInclude Include="cmd\TestCommand.h" />
-    <ClInclude Include="Tool.h" />
-    <ClInclude Include="ToolManager.h" />
-    <ClInclude Include="Vehicle.h" />
+    <ClInclude Include="src\cmd\BuyToolCommand.h" />
+    <ClInclude Include="src\cmd\Command.h" />
+    <ClInclude Include="src\cmd\CommandManager.h" />
+    <ClInclude Include="src\cmd\HelpCommand.h" />
+    <ClInclude Include="src\cmd\InventoryCommand.h" />
+    <ClInclude Include="src\cmd\ShopCommand.h" />
+    <ClInclude Include="src\Malfunction.h" />
+    <ClInclude Include="src\Player.h" />
+    <ClInclude Include="src\cmd\TestCommand.h" />
+    <ClInclude Include="src\Tool.h" />
+    <ClInclude Include="src\ToolManager.h" />
+    <ClInclude Include="src\Vehicle.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

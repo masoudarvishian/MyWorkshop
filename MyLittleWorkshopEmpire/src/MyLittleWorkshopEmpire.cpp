@@ -17,6 +17,7 @@
 
 int main()
 {
+	// create command manager
 	auto cmdManager = std::make_unique<CommandManager>();
 
 	auto player = std::make_unique<Player>();
