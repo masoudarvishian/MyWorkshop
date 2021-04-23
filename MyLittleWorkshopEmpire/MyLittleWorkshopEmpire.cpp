@@ -9,90 +9,89 @@
 
 int main()
 {
-	g_ToolManager = new ToolManager();
 	Player* player = new Player();
 
 	std::list<Vehicle*> vehicles;
 
 	// init tools
-	g_ToolManager->AddTool(new Tool("Jack", 50));
-	g_ToolManager->AddTool(new Tool("Torque brace", 40));
+	ToolManager::GetInstance()->AddTool(new Tool("Jack", 50));
+	ToolManager::GetInstance()->AddTool(new Tool("Torque brace", 40));
 
 	// issue fixed: jumb cable was $50, but it should be 20$ based on document.
-	g_ToolManager->AddTool(new Tool("Jumper Cables", 20));
+	ToolManager::GetInstance()->AddTool(new Tool("Jumper Cables", 20));
 	/////////////////////////////////////////////////////////////////////
 
-	g_ToolManager->AddTool(new Tool("Phase tester", 10));
-	g_ToolManager->AddTool(new Tool("Hammer", 20));
-	g_ToolManager->AddTool(new Tool("Screwdriver", 10));
+	ToolManager::GetInstance()->AddTool(new Tool("Phase tester", 10));
+	ToolManager::GetInstance()->AddTool(new Tool("Hammer", 20));
+	ToolManager::GetInstance()->AddTool(new Tool("Screwdriver", 10));
 
 	// init players tools
-	player->InitTool(g_ToolManager->FindToolByName("Jack"));
-	player->InitTool(g_ToolManager->FindToolByName("Torque brace"));
-	player->InitTool(g_ToolManager->FindToolByName("Hammer"));
+	player->InitTool(ToolManager::GetInstance()->FindToolByName("Jack"));
+	player->InitTool(ToolManager::GetInstance()->FindToolByName("Torque brace"));
+	player->InitTool(ToolManager::GetInstance()->FindToolByName("Hammer"));
 
 	// init first vehicle
 	Vehicle* motorCycle = new Vehicle("Motorcycle");
 
 	std::list<Tool*> requiredTools;
-	requiredTools.push_back(g_ToolManager->FindToolByName("Jack"));
-	requiredTools.push_back(g_ToolManager->FindToolByName("Torque brace"));
+	requiredTools.push_back(ToolManager::GetInstance()->FindToolByName("Jack"));
+	requiredTools.push_back(ToolManager::GetInstance()->FindToolByName("Torque brace"));
 	motorCycle->AddMalfunction(new Malfunction("Flat tire", requiredTools, 18));
 
 	requiredTools.clear();
-	requiredTools.push_back(g_ToolManager->FindToolByName("Jumper Cables"));
-	requiredTools.push_back(g_ToolManager->FindToolByName("Phase tester"));
+	requiredTools.push_back(ToolManager::GetInstance()->FindToolByName("Jumper Cables"));
+	requiredTools.push_back(ToolManager::GetInstance()->FindToolByName("Phase tester"));
 	motorCycle->AddMalfunction(new Malfunction("Empty battery", requiredTools, 6));
 
 	requiredTools.clear();
-	requiredTools.push_back(g_ToolManager->FindToolByName("Phase tester"));
+	requiredTools.push_back(ToolManager::GetInstance()->FindToolByName("Phase tester"));
 	motorCycle->AddMalfunction(new Malfunction("Lights off", requiredTools, 2));
 
 	// init second vehicle
 	Vehicle* compactCar = new Vehicle("Compact car");
 
 	requiredTools.clear();
-	requiredTools.push_back(g_ToolManager->FindToolByName("Hammer"));
-	requiredTools.push_back(g_ToolManager->FindToolByName("Screwdriver"));
-	requiredTools.push_back(g_ToolManager->FindToolByName("Torque brace"));
+	requiredTools.push_back(ToolManager::GetInstance()->FindToolByName("Hammer"));
+	requiredTools.push_back(ToolManager::GetInstance()->FindToolByName("Screwdriver"));
+	requiredTools.push_back(ToolManager::GetInstance()->FindToolByName("Torque brace"));
 	compactCar->AddMalfunction(new Malfunction("Shock Absorber broken", requiredTools, 14));
 
 	requiredTools.clear();
-	requiredTools.push_back(g_ToolManager->FindToolByName("Torque brace"));
-	requiredTools.push_back(g_ToolManager->FindToolByName("Screwdriver"));
+	requiredTools.push_back(ToolManager::GetInstance()->FindToolByName("Torque brace"));
+	requiredTools.push_back(ToolManager::GetInstance()->FindToolByName("Screwdriver"));
 	compactCar->AddMalfunction(new Malfunction("Engine failure", requiredTools, 10));
 
 	requiredTools.clear();
-	requiredTools.push_back(g_ToolManager->FindToolByName("Phase tester"));
-	requiredTools.push_back(g_ToolManager->FindToolByName("Screwdriver"));
+	requiredTools.push_back(ToolManager::GetInstance()->FindToolByName("Phase tester"));
+	requiredTools.push_back(ToolManager::GetInstance()->FindToolByName("Screwdriver"));
 	compactCar->AddMalfunction(new Malfunction("Defect spark plugs", requiredTools, 4));
 
 	requiredTools.clear();
-	requiredTools.push_back(g_ToolManager->FindToolByName("Jumper Cables"));
-	requiredTools.push_back(g_ToolManager->FindToolByName("Phase tester"));
+	requiredTools.push_back(ToolManager::GetInstance()->FindToolByName("Jumper Cables"));
+	requiredTools.push_back(ToolManager::GetInstance()->FindToolByName("Phase tester"));
 	compactCar->AddMalfunction(new Malfunction("Empty Battery", requiredTools, 6));
 
 	// init third vehicle
 	Vehicle* racingCar = new Vehicle("Racing car");
 
 	requiredTools.clear();
-	requiredTools.push_back(g_ToolManager->FindToolByName("Screwdriver"));
-	requiredTools.push_back(g_ToolManager->FindToolByName("Torque brace"));
+	requiredTools.push_back(ToolManager::GetInstance()->FindToolByName("Screwdriver"));
+	requiredTools.push_back(ToolManager::GetInstance()->FindToolByName("Torque brace"));
 	motorCycle->AddMalfunction(new Malfunction("Gas pedal broken", requiredTools, 10));
 
 	requiredTools.clear();
-	requiredTools.push_back(g_ToolManager->FindToolByName("Torquebrace"));
-	requiredTools.push_back(g_ToolManager->FindToolByName("Screwdriver"));
+	requiredTools.push_back(ToolManager::GetInstance()->FindToolByName("Torquebrace"));
+	requiredTools.push_back(ToolManager::GetInstance()->FindToolByName("Screwdriver"));
 	racingCar->AddMalfunction(new Malfunction("Engine failure", requiredTools, 10));
 
 	requiredTools.clear();
-	requiredTools.push_back(g_ToolManager->FindToolByName("Jack"));
-	requiredTools.push_back(g_ToolManager->FindToolByName("Torque brace"));
+	requiredTools.push_back(ToolManager::GetInstance()->FindToolByName("Jack"));
+	requiredTools.push_back(ToolManager::GetInstance()->FindToolByName("Torque brace"));
 	racingCar->AddMalfunction(new Malfunction("Bald tire", requiredTools, 18));
 
 	requiredTools.clear();
-	requiredTools.push_back(g_ToolManager->FindToolByName("Hammer"));
-	requiredTools.push_back(g_ToolManager->FindToolByName("Screwdriver"));
+	requiredTools.push_back(ToolManager::GetInstance()->FindToolByName("Hammer"));
+	requiredTools.push_back(ToolManager::GetInstance()->FindToolByName("Screwdriver"));
 	racingCar->AddMalfunction(new Malfunction("Bumper damaged", requiredTools, 6));
 
 	vehicles.push_back(motorCycle);
@@ -134,7 +133,7 @@ int main()
 			break;
 		case 's':   // shop
 		{
-			g_ToolManager->PrintToolInShop();
+			ToolManager::GetInstance()->PrintToolInShop();
 		}
 		break;
 		case 'b':   // buy tool
@@ -144,7 +143,7 @@ int main()
 			{
 				index = std::stoi(command.substr(1, command.length()));
 			}
-			Tool* toolToBuy = g_ToolManager->GetToolByIndex(index);
+			Tool* toolToBuy = ToolManager::GetInstance()->GetToolByIndex(index);
 			player->BuyTool(toolToBuy);
 		}
 		break;

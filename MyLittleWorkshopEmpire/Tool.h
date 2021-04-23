@@ -31,19 +31,27 @@ private:
     int m_price;
 };
 
-static ToolManager* g_ToolManager;
-
 class ToolManager
 {
 public:
-    ToolManager()
-    {
-        g_ToolManager = this;
-    }
+    // it's singleton, and cannot have these
+    ToolManager(ToolManager& other) = delete;
+    void operator=(const ToolManager&) = delete;
 
-    ~ToolManager()
+    // default constructor
+    ToolManager() {} 
+    
+    // destructor
+    ~ToolManager() {}
+
+    // singleton pattern
+    static ToolManager* GetInstance()
     {
-        g_ToolManager = nullptr;
+        if (_instance == nullptr)
+        {
+            _instance = new ToolManager;
+        }
+        return _instance;
     }
 
     void AddTool(Tool* tool)
@@ -87,4 +95,5 @@ public:
 
 private:
     std::map<int, Tool*> m_tools;
+    static ToolManager* _instance;
 };
