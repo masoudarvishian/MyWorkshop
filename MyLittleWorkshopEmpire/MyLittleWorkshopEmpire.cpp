@@ -11,7 +11,7 @@
 
 int main()
 {
-	std::unique_ptr<Player> player = std::make_unique<Player>();
+	auto player = std::make_unique<Player>();
 
 	std::list<std::shared_ptr<Vehicle>> vehicles;
 
@@ -33,7 +33,7 @@ int main()
 	player->InitTool(ToolManager::GetInstance()->FindToolByName("Hammer"));
 
 	// init first vehicle
-	std::shared_ptr<Vehicle> motorCycle = std::make_shared<Vehicle>("Motorcycle");
+	auto motorCycle = std::make_shared<Vehicle>("Motorcycle");
 
 	std::list<Tool*> requiredTools;
 	requiredTools.push_back(ToolManager::GetInstance()->FindToolByName("Jack"));
@@ -50,7 +50,7 @@ int main()
 	motorCycle->AddMalfunction(std::make_shared<Malfunction>("Lights off", requiredTools, 2));
 
 	// init second vehicle
-	std::shared_ptr<Vehicle> compactCar = std::make_shared<Vehicle>("Compact car");
+	auto compactCar = std::make_shared<Vehicle>("Compact car");
 
 	requiredTools.clear();
 	requiredTools.push_back(ToolManager::GetInstance()->FindToolByName("Hammer"));
@@ -74,7 +74,7 @@ int main()
 	compactCar->AddMalfunction(std::make_shared<Malfunction>("Empty Battery", requiredTools, 6));
 
 	// init third vehicle
-	std::shared_ptr<Vehicle> racingCar = std::make_shared<Vehicle>("Racing car");
+	auto racingCar = std::make_shared<Vehicle>("Racing car");
 
 	requiredTools.clear();
 	requiredTools.push_back(ToolManager::GetInstance()->FindToolByName("Screwdriver"));
@@ -100,7 +100,7 @@ int main()
 	vehicles.push_back(compactCar);
 	vehicles.push_back(racingCar);
 
-	bool gameIsRunning{ true };
+	auto gameIsRunning{ true };
 	std::string command;
 
 	std::cout << "Hello Player!\nYou are about to lead your own Workshop.\n";
@@ -140,7 +140,7 @@ int main()
 		break;
 		case 'b':   // buy tool
 		{
-			int index = 0;
+			auto index = 0;
 			if (command.length() > 1)
 			{
 				index = std::stoi(command.substr(1, command.length()));
@@ -159,7 +159,7 @@ int main()
 		}
 	}
 
-	// deallocate toolmanager
+	// release toolmanager's memory
 	delete ToolManager::GetInstance();
 
 	return 0;

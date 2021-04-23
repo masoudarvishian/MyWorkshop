@@ -19,7 +19,7 @@ ToolManager* ToolManager::GetInstance() noexcept
 
 void ToolManager::AddTool(std::shared_ptr<Tool> tool)
 {
-	const int nextIndex = m_tools.size();
+	auto nextIndex = m_tools.size();
 	m_tools[nextIndex] = tool;
 }
 
@@ -50,8 +50,8 @@ void ToolManager::PrintToolInShop() const noexcept
 	printf("  Shop content:\n");
 	for (auto iter(m_tools.begin()); iter != m_tools.end(); iter++)
 	{
-		int index{ iter->first };
-		Tool* tool{ iter->second.get() };
+		auto index{ iter->first };
+		auto tool{ iter->second.get() };
 		printf("  - %d: %s (%d$)\n", index, tool->GetName().c_str(), tool->GetPrice());
 	}
 }
