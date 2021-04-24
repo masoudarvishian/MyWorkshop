@@ -12,6 +12,7 @@ public:
 
     ~Malfunction();
 
+    const int GetId() const noexcept;
     const std::string GetName() const noexcept;
     const int GetRewardAmount() const noexcept;
     std::list<Tool*> GetNeededTools() const noexcept;

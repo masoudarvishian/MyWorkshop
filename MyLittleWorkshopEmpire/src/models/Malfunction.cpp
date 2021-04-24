@@ -12,6 +12,11 @@ Malfunction::~Malfunction()
 	std::cout << "Malfunction #" << m_id << " is destroyed!\n";
 }
 
+const int Malfunction::GetId() const noexcept
+{
+	return m_id;
+}
+
 const std::string Malfunction::GetName() const noexcept { return m_name; }
 
 const int Malfunction::GetRewardAmount() const noexcept { return m_rewardAmount; }

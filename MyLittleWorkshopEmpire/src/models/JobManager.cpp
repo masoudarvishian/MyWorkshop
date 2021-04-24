@@ -24,7 +24,7 @@ void JobManager::addJob(std::shared_ptr<Job> job) noexcept
 void JobManager::removeJob(std::shared_ptr<Job> job) noexcept
 {
 	auto search = std::find_if(m_jobs.begin(), m_jobs.end(), [&job](std::shared_ptr<Job> j) {
-		return job.get()->getId() == job.get()->getId();
+		return job.get()->GetId() == job.get()->GetId();
 	});
 
 	if (search != m_jobs.end())

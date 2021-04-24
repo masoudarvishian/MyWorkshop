@@ -5,6 +5,7 @@
 #include <list>
 #include <memory>
 #include "Malfunction.h"
+#include "JobManager.h"
 
 class Vehicle
 {
@@ -14,6 +15,7 @@ public:
     ~Vehicle();
 
     void AddMalfunction(std::shared_ptr<Malfunction> value) noexcept;
+    const int GetId() const noexcept;
     const std::string GetType() const noexcept;
     const std::list<std::shared_ptr<Malfunction>> GetListOfMalfunction() const noexcept;
 
