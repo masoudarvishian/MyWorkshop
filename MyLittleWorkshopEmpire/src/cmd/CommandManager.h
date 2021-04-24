@@ -6,7 +6,6 @@
 #include "Command.h"
 #include <memory>
 
-
 class CommandManager
 {
 public:

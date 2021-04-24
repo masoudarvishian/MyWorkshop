@@ -20,7 +20,7 @@ int main()
 	// create command manager
 	auto cmdManager = std::make_unique<CommandManager>();
 
-	auto player = std::make_unique<Player>();
+	auto player = std::make_shared<Player>();
 
 	std::list<std::shared_ptr<Vehicle>> vehicles;
 
@@ -119,21 +119,25 @@ int main()
 		std::cout << "\nWhat do you want to do now? ";
 		std::getline(std::cin, command);
 
+		// in case of entering empty input
 		if (command.empty())
 		{
 			std::cout << "Wrong Input! press 'h' for more information.\n";
 			continue;
 		}
 
+		// these states can be handled by state machine pattern
 		switch (command.at(0))
 		{
 		case 'h':   // help, listing all commands
 		{
+			// a command for help option
 			cmdManager->add(std::make_shared<HelpCommand>());
 		}
 		break;
 		case 'i':   // inventory
 		{
+			// a command for inventory option
 			cmdManager->add(std::make_shared<InventoryCommand>(player.get()));
 		}
 		break;
@@ -143,6 +147,7 @@ int main()
 			break;
 		case 's':   // shop
 		{
+			// a command for shop option
 			cmdManager->add(std::make_shared<ShopCommand>());
 		}
 		break;
@@ -154,6 +159,7 @@ int main()
 				index = std::stoi(command.substr(1, command.length()));
 			}
 
+			// a command for buy tool option
 			cmdManager->add(std::make_shared<BuyToolCommand>(player.get(), index));
 		}
 		break;
