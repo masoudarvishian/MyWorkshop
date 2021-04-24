@@ -7,6 +7,16 @@ Tool::Tool(const char* name, const int price) noexcept
 	m_id = ++id;
 }
 
+Tool::~Tool()
+{
+	std::cout << "tool #" << m_id << " is destroyed" << std::endl;
+}
+
+const int Tool::GetId() const noexcept
+{
+	return m_id;
+}
+
 const std::string Tool::GetName() const noexcept { return m_name; }
 
 const int Tool::GetPrice() const noexcept { return m_price; }

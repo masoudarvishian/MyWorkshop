@@ -9,7 +9,7 @@
 class ShopViewModel
 {
 public:
-	const std::map<int, std::shared_ptr<Tool>> getTools() const noexcept;
+	const std::vector<std::shared_ptr<Tool>> getTools() const noexcept;
 };
 #endif // !SHOP_VIEWMODEL_H
 

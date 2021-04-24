@@ -7,11 +7,11 @@
 class BuyToolCommand : public Command
 {
 public:
-	BuyToolCommand(int toolIndex);
+	BuyToolCommand(int toolId);
 	virtual void execute(std::function<void()> callback) override;
 
 private:
-	int m_toolIndex;
+	int m_toolId;
 };
 
 #endif

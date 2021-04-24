@@ -10,10 +10,7 @@ class CommandManager
 {
 public:
 	CommandManager() {}
-	~CommandManager() 
-	{
-		std::cout << "Command Manager is destroyed!\n";
-	}
+	~CommandManager();
 
 	void add(std::shared_ptr<Command> cmd) noexcept;
 

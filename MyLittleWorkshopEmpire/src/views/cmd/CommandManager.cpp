@@ -1,5 +1,10 @@
 #include "CommandManager.h"
 
+CommandManager::~CommandManager()
+{
+	std::cout << "CommandManager is destroyed!\n";
+}
+
 void CommandManager::add(std::shared_ptr<Command> cmd) noexcept
 {
 	m_queue.push(cmd);

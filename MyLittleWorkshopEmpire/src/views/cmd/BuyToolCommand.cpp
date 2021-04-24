@@ -1,13 +1,13 @@
 #include "BuyToolCommand.h"
 
-BuyToolCommand::BuyToolCommand(int toolIndex) : m_toolIndex{ toolIndex }
+BuyToolCommand::BuyToolCommand(int toolId) : m_toolId{ toolId }
 {}
 
 void BuyToolCommand::execute(std::function<void()> callback)
 {
 	auto playerViewModel = std::make_unique<PlayerViewModel>();
 	
-	playerViewModel->buyTool(m_toolIndex);
+	playerViewModel->buyTool(m_toolId);
 
 	std::cout << playerViewModel->buyMessage;
 	

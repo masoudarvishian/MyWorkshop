@@ -64,14 +64,14 @@ void ConsoleView::run()
 		break;
 		case 'b':   // buy tool
 		{
-			auto index = 0;
+			auto id = 0;
 			if (command.length() > 1)
 			{
-				index = std::stoi(command.substr(1, command.length()));
+				id = std::stoi(command.substr(1, command.length()));
 			}
 
 			// a command for buy tool option
-			m_cmdManager->add(std::make_shared<BuyToolCommand>(index));
+			m_cmdManager->add(std::make_shared<BuyToolCommand>(id));
 		}
 		break;
 		case 'x':   // quit game

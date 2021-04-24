@@ -8,9 +8,9 @@ void ShopCommand::execute(std::function<void()> callback)
 	printf("  Shop content:\n");
 	for (auto iter(tools.begin()); iter != tools.end(); iter++)
 	{
-		auto index{ iter->first };
-		auto tool{ iter->second.get() };
-		printf("  - %d: %s (%d$)\n", index, tool->GetName().c_str(), tool->GetPrice());
+		auto tool{ iter->get() };
+
+		printf("  - #%d %s (%d$)\n", tool->GetId(), tool->GetName().c_str(), tool->GetPrice());
 	}
 	
 	callback();

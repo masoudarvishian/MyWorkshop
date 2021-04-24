@@ -8,7 +8,7 @@ Vehicle::Vehicle(const char* type) noexcept : m_type{ type }
 
 Vehicle::~Vehicle()
 {
-    std::cout << "Vehicle: #" << m_id << " is destroyed!\n";
+    std::cout << "Vehicle #" << m_id << " is destroyed!\n";
 }
 
 void Vehicle::AddMalfunction(std::shared_ptr<Malfunction> value) noexcept

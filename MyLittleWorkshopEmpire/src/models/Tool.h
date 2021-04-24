@@ -13,11 +13,9 @@ public:
 
 	Tool(const char* name, const int price) noexcept;
 
-	~Tool()
-	{
-		std::cout << "tool: #" << m_id << " is destroyed" << std::endl;
-	}
+	~Tool();
 
+	const int GetId() const noexcept;
 	const std::string GetName() const noexcept;
 	const int GetPrice() const noexcept;
 	const int GetMaxWearCount() const noexcept;

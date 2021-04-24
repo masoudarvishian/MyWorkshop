@@ -2,7 +2,7 @@
 #define TOOL_MANAGER_H
 
 #include "Tool.h"
-#include <map>
+#include <vector>
 #include <string>
 
 class ToolManager
@@ -26,12 +26,12 @@ public:
 
 	Tool* FindToolByName(std::string name) const;
 
-	Tool* GetToolByIndex(int toolIndex);
+	Tool* GetToolById(int toolIndex);
 
-	const std::map<int, std::shared_ptr<Tool>> getTools() const noexcept;
+	const std::vector<std::shared_ptr<Tool>> getTools() const noexcept;
 
 private:
-	std::map<int, std::shared_ptr<Tool>> m_tools;
+	std::vector<std::shared_ptr<Tool>> m_tools;
 
 	// singleton
 	static std::shared_ptr<ToolManager> _instance;

@@ -19,39 +19,44 @@ ToolManager* ToolManager::GetInstance() noexcept
 
 void ToolManager::AddTool(std::shared_ptr<Tool> tool)
 {
-	auto nextIndex = m_tools.size();
-	m_tools[nextIndex] = tool;
+	m_tools.push_back(tool);
 }
 
 Tool* ToolManager::FindToolByName(std::string name) const
 {
 	Tool* found{ nullptr };
 
-	for (auto iter(m_tools.begin()); iter != m_tools.end(); iter++)
-	{
-		auto tool{ iter->second };
+	auto search = std::find_if(m_tools.begin(), m_tools.end(), [&name](std::shared_ptr<Tool> t) {
+		return name == t.get()->GetName();
+	});
 
-		if (tool->GetName() == name)
-		{
-			found = tool.get();
-			break;
-		}
+	if (search != m_tools.end())
+	{
+		int index = std::distance(m_tools.begin(), search);
+		found = m_tools.at(index).get();
 	}
 
 	return found;
 }
 
-Tool* ToolManager::GetToolByIndex(int toolIndex)
+Tool* ToolManager::GetToolById(int toolId)
 {
-	if (toolIndex >= m_tools.size() || toolIndex < 0)
+	Tool* found{ nullptr };
+
+	auto search = std::find_if(m_tools.begin(), m_tools.end(), [&toolId](std::shared_ptr<Tool> t) {
+		return toolId == t.get()->GetId();
+	});
+
+	if (search != m_tools.end())
 	{
-		return nullptr;
+		int index = std::distance(m_tools.begin(), search);
+	    found = m_tools.at(index).get();
 	}
 
-	return m_tools[toolIndex].get();
+	return found;
 }
 
-const std::map<int, std::shared_ptr<Tool>> ToolManager::getTools() const noexcept
+const std::vector<std::shared_ptr<Tool>> ToolManager::getTools() const noexcept
 {
 	return m_tools;
 }

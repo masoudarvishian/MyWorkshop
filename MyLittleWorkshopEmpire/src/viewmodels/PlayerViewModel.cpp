@@ -15,15 +15,15 @@ std::string PlayerViewModel::getPrintInventoryMsg()
 		auto tool{ iter->first };
 		auto usageCounter{ iter->second };
 
-		inventoryMsgStream << "  - " << tool->GetName() << " x" << usageCounter << '\n';
+		inventoryMsgStream << "  - #" << tool->GetId() << " " << tool->GetName() << " x" << usageCounter << '\n';
 	}
 
 	return inventoryMsgStream.str();
 }
 
-void PlayerViewModel::buyTool(int toolIndex)
+void PlayerViewModel::buyTool(int toolId)
 {
-	auto toolToBuy = ToolManager::GetInstance()->GetToolByIndex(toolIndex);
+	auto toolToBuy = ToolManager::GetInstance()->GetToolById(toolId);
 	if (!toolToBuy)
 	{
 		buyMessage = "tool not found!";
