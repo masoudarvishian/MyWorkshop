@@ -23,6 +23,8 @@ public:
 	// singleton pattern
 	static Storage* GetInstance() noexcept;
 
+	const std::list<std::shared_ptr<Vehicle>> getVehicles() const noexcept ;
+
 private:
 	std::shared_ptr<Player> m_player;
 	std::list<std::shared_ptr<Vehicle>> m_vehicles;

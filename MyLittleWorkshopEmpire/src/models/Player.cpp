@@ -1,11 +1,14 @@
 #include "Player.h"
 
 Player::Player() : m_money{ START_MONEY }
-{}
+{
+	static int id{ 0 };
+	m_id = ++id;
+}
 
 Player::~Player()
 {
-	std::cout << "player is destroyed!\n";
+	std::cout << "player #" << m_id << " is destroyed!\n";
 }
 
 bool Player::BuyTool(Tool* tool)

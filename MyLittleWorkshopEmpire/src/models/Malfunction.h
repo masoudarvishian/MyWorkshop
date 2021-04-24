@@ -12,14 +12,15 @@ public:
 
     ~Malfunction();
 
-    std::string GetName() const noexcept;
-    int GetFixCosts() const noexcept;
+    const std::string GetName() const noexcept;
+    const int GetRewardAmount() const noexcept;
     std::list<Tool*> GetNeededTools() const noexcept;
 
 private:
     std::string m_name;
     std::list<Tool*> m_tools;
     int m_rewardAmount;
+    int m_id;
 };
 
 #endif 

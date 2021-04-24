@@ -11,7 +11,7 @@ int main()
 
 	// handle UI
 	auto consoleView = std::make_unique<ConsoleView>();
-	consoleView->display();
+	consoleView->run();
 
 	return EXIT_SUCCESS;
 }

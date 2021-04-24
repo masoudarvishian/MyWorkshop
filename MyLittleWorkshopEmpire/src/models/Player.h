@@ -26,6 +26,7 @@ public:
 private:
 	int m_money;
 	std::map<Tool*, int> m_usableTools;
+	int m_id;
 };
 
 #endif

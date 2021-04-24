@@ -2,15 +2,18 @@
 
 Malfunction::Malfunction(const char* name, const std::list<Tool*> tools, const int rewardAmount) noexcept
 	: m_name{ name }, m_tools{ tools }, m_rewardAmount{ rewardAmount }
-{}
+{
+	static int id{ 0 };
+	m_id = ++id;
+}
 
 Malfunction::~Malfunction()
 {
-	std::cout << "Malfunction: " << m_name << " is destroyed!\n";
+	std::cout << "Malfunction #" << m_id << " is destroyed!\n";
 }
 
-std::string Malfunction::GetName() const noexcept { return m_name.c_str(); }
+const std::string Malfunction::GetName() const noexcept { return m_name; }
 
-int Malfunction::GetFixCosts() const noexcept { return m_rewardAmount; }
+const int Malfunction::GetRewardAmount() const noexcept { return m_rewardAmount; }
 
 std::list<Tool*> Malfunction::GetNeededTools() const noexcept { return m_tools; }

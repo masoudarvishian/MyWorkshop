@@ -74,7 +74,7 @@ void Storage::init()
 	motorCycle->AddMalfunction(std::make_shared<Malfunction>("Gas pedal broken", requiredTools, 10));
 
 	requiredTools.clear();
-	requiredTools.push_back(ToolManager::GetInstance()->FindToolByName("Torquebrace"));
+	requiredTools.push_back(ToolManager::GetInstance()->FindToolByName("Torque brace"));
 	requiredTools.push_back(ToolManager::GetInstance()->FindToolByName("Screwdriver"));
 	racingCar->AddMalfunction(std::make_shared<Malfunction>("Engine failure", requiredTools, 10));
 
@@ -105,4 +105,9 @@ Storage* Storage::GetInstance() noexcept
 		_instance = std::make_shared<Storage>();
 	}
 	return _instance.get();
+}
+
+const std::list<std::shared_ptr<Vehicle>> Storage::getVehicles() const noexcept
+{
+	return m_vehicles;
 }

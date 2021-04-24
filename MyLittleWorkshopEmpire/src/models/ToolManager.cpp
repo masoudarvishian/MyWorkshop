@@ -25,11 +25,12 @@ void ToolManager::AddTool(std::shared_ptr<Tool> tool)
 
 Tool* ToolManager::FindToolByName(std::string name) const
 {
-	Tool* found{ 0 };
+	Tool* found{ nullptr };
 
 	for (auto iter(m_tools.begin()); iter != m_tools.end(); iter++)
 	{
 		auto tool{ iter->second };
+
 		if (tool->GetName() == name)
 		{
 			found = tool.get();
@@ -42,7 +43,7 @@ Tool* ToolManager::FindToolByName(std::string name) const
 
 Tool* ToolManager::GetToolByIndex(int toolIndex)
 {
-	if (toolIndex >= m_tools.size())
+	if (toolIndex >= m_tools.size() || toolIndex < 0)
 	{
 		return nullptr;
 	}

@@ -15,16 +15,17 @@ public:
 
 	~Tool()
 	{
-		std::cout << "tool: " << m_name << " has destroyed" << std::endl;
+		std::cout << "tool: #" << m_id << " is destroyed" << std::endl;
 	}
 
-	std::string GetName() const noexcept;
-	int GetPrice() const noexcept;
-	int GetMaxWearCount() const noexcept;
+	const std::string GetName() const noexcept;
+	const int GetPrice() const noexcept;
+	const int GetMaxWearCount() const noexcept;
 
 private:
 	std::string m_name;
 	int m_price;
+	int m_id;
 };
 
 #endif 

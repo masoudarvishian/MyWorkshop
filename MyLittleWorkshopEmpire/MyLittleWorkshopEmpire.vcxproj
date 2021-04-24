@@ -139,9 +139,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\models\Job.cpp" />
+    <ClCompile Include="src\models\JobManager.cpp" />
+    <ClCompile Include="src\viewmodels\DisplayJobsViewModel.cpp" />
     <ClCompile Include="src\viewmodels\ShopViewModel.cpp" />
     <ClCompile Include="src\views\cmd\BuyToolCommand.cpp" />
     <ClCompile Include="src\views\cmd\CommandManager.cpp" />
+    <ClCompile Include="src\views\cmd\DisplayJobsCommand.cpp" />
     <ClCompile Include="src\views\cmd\HelpCommand.cpp" />
     <ClCompile Include="src\views\cmd\InventoryCommand.cpp" />
     <ClCompile Include="src\views\cmd\ShopCommand.cpp" />
@@ -158,10 +162,14 @@
     <ClCompile Include="src\views\ConsoleView.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\models\Job.h" />
+    <ClInclude Include="src\models\JobManager.h" />
+    <ClInclude Include="src\viewmodels\DisplayJobsViewModel.h" />
     <ClInclude Include="src\viewmodels\ShopViewModel.h" />
     <ClInclude Include="src\views\cmd\BuyToolCommand.h" />
     <ClInclude Include="src\views\cmd\Command.h" />
     <ClInclude Include="src\views\cmd\CommandManager.h" />
+    <ClInclude Include="src\views\cmd\DisplayJobsCommand.h" />
     <ClInclude Include="src\views\cmd\HelpCommand.h" />
     <ClInclude Include="src\views\cmd\InventoryCommand.h" />
     <ClInclude Include="src\views\cmd\ShopCommand.h" />

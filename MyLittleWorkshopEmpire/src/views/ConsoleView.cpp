@@ -1,4 +1,5 @@
 #include "ConsoleView.h"
+#include "cmd/DisplayJobsCommand.h"
 
 ConsoleView::ConsoleView()
 {
@@ -10,7 +11,7 @@ ConsoleView::~ConsoleView()
 	std::cout << "ConsoleView is destroyed!\n";
 }
 
-void ConsoleView::display()
+void ConsoleView::run()
 {
 	auto gameIsRunning{ true };
 	std::string command;
@@ -47,9 +48,14 @@ void ConsoleView::display()
 		}
 		break;
 		case 'j':   // jobs
-			break;
+		{
+			m_cmdManager->add(std::make_unique<DisplayJobsCommand>());
+		}
+		break;
 		case 'a':   // accept job
-			break;
+		{
+		}
+		break;
 		case 's':   // shop
 		{
 			// a command for shop option

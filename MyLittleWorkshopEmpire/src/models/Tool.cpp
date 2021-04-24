@@ -2,10 +2,13 @@
 
 Tool::Tool(const char* name, const int price) noexcept 
 	: m_name{ name }, m_price{ price }
-{}
+{
+	static int id{ 0 };
+	m_id = ++id;
+}
 
-std::string Tool::GetName() const noexcept { return m_name.c_str(); }
+const std::string Tool::GetName() const noexcept { return m_name; }
 
-int Tool::GetPrice() const noexcept { return m_price; }
+const int Tool::GetPrice() const noexcept { return m_price; }
 
-int Tool::GetMaxWearCount() const noexcept { return MAX_WEAR_COUNT; }
+const int Tool::GetMaxWearCount() const noexcept { return MAX_WEAR_COUNT; }

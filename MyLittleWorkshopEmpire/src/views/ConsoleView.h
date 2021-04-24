@@ -15,7 +15,7 @@ class ConsoleView
 public:
 	ConsoleView();
 	~ConsoleView();
-	void display();
+	void run();
 private:
 	std::unique_ptr<CommandManager> m_cmdManager;
 };

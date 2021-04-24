@@ -14,12 +14,13 @@ public:
     ~Vehicle();
 
     void AddMalfunction(std::shared_ptr<Malfunction> value) noexcept;
-    std::string GetType() const noexcept;
-    std::list<std::shared_ptr<Malfunction>> GetListOfMalfunction() const noexcept;
+    const std::string GetType() const noexcept;
+    const std::list<std::shared_ptr<Malfunction>> GetListOfMalfunction() const noexcept;
 
 private:
     std::string m_type;
     std::list<std::shared_ptr<Malfunction>> m_malfunctions;
+    int m_id;
 };
 
 #endif
