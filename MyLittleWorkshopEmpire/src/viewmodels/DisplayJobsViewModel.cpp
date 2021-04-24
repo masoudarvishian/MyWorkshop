@@ -10,11 +10,9 @@ const std::vector<std::string> DisplayJobsViewModel::getJobs() const noexcept
 		std::string msg = "j #" + std::to_string(job->GetId()) + ". Vehicle: " + job->GetVehicleType() +
 			", Malfunction: " + job->GetMulfanctionName() + ", Reward: " + std::to_string(job->GetRewardAmount()) + "$, Tools:";
 
-		auto toolCounter{ 1 };
-		for (auto tool : job->GetToolsName())
+		for (auto tool : job->GetToolsIdName())
 		{
-			msg += (' ' + std::to_string(toolCounter) + "." + tool);
-			++toolCounter;
+			msg += (" #" + std::to_string(tool.first) + " " + tool.second + " /");
 		}
 		jobDescriptionList.push_back(msg);
 	}

@@ -3,13 +3,13 @@
 
 #include <iostream>
 #include "string"
-#include "vector"
+#include "map"
 
 class Job
 {
 public:
-	Job(int vehicleIndex, int malfunctionIndex, std::string vehicleType, 
-		std::string malfunctionName, int rewardAmount, std::vector<std::string> toolsName);
+	Job(int vehicleId, int malfunctionId, std::string vehicleType, 
+		std::string malfunctionName, int rewardAmount, std::map<int, std::string> toolsIdName);
 	~Job();
     
 	const int GetId() const noexcept;
@@ -18,7 +18,7 @@ public:
 	const std::string GetVehicleType() const noexcept;
 	const std::string GetMulfanctionName() const noexcept;
 	const int GetRewardAmount() const noexcept;
-	const std::vector<std::string> GetToolsName() const noexcept;
+	const std::map<int, std::string> GetToolsIdName() const noexcept;
 private:
 	int m_id;
 	int m_vehicleId;
@@ -26,7 +26,7 @@ private:
 	std::string m_vehicleType;
 	std::string m_malfunctionName;
 	int m_rewardAmount;
-	std::vector<std::string> m_toolsName;
+	std::map<int, std::string> m_toolsIdName;
 };
 
 #endif // !JOB_H

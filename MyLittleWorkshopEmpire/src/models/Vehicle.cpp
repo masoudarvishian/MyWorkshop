@@ -1,4 +1,5 @@
 #include "Vehicle.h"
+#include "map"
 
 Vehicle::Vehicle(const char* type) noexcept : m_type{ type }
 {
@@ -18,13 +19,13 @@ void Vehicle::AddMalfunction(std::shared_ptr<Malfunction> value) noexcept
     // ADD JOB //
     // 
     // here we can fire an event, but because of time-limit/simplicity, I call the function directly
-    std::vector<std::string> toolsName;
+    std::map<int, std::string> toolsIdName;
     auto requiredTools = value->GetNeededTools();
     for (auto tool : requiredTools)
     {
-        toolsName.push_back(tool->GetName());
+        toolsIdName[tool->GetId()] = tool->GetName();
     }
-    auto job = std::make_shared<Job>(m_id, value->GetId(), m_type, value->GetName(), value->GetRewardAmount(), toolsName);
+    auto job = std::make_shared<Job>(m_id, value->GetId(), m_type, value->GetName(), value->GetRewardAmount(), toolsIdName);
     JobManager::GetInstance()->addJob(job);
 }
 

@@ -1,9 +1,9 @@
 #include "Job.h"
 
 Job::Job(int vehicleId, int malfunctionId, std::string vehicleType,
-	std::string malfunctionName, int rewardAmount, std::vector<std::string> toolsName)
+	std::string malfunctionName, int rewardAmount, std::map<int, std::string> toolsIdName)
 	: m_vehicleId{ vehicleId }, m_malfunctionId{ malfunctionId }, m_vehicleType{ vehicleType }, m_malfunctionName{ malfunctionName },
-	m_rewardAmount{ rewardAmount }, m_toolsName{ toolsName }
+	m_rewardAmount{ rewardAmount }, m_toolsIdName{ toolsIdName }
 {
 	static int id{ 0 };
 	m_id = ++id;
@@ -44,8 +44,8 @@ const int Job::GetRewardAmount() const noexcept
 	return m_rewardAmount;
 }
 
-const std::vector<std::string> Job::GetToolsName() const noexcept
+const std::map<int, std::string> Job::GetToolsIdName() const noexcept
 {
-	return m_toolsName;
+	return m_toolsIdName;
 }
 
