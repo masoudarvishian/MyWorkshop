@@ -4,7 +4,9 @@
 #include <vector>
 #include <memory>
 #include <iostream>
+#include <algorithm>
 #include "Job.h"
+#include "../Storage.h"
 
 class JobManager
 {
@@ -22,11 +24,15 @@ public:
 	// singleton pattern
 	static JobManager* GetInstance() noexcept;
 
-	void addJob(std::shared_ptr<Job> job) noexcept;
-	void removeJob(std::shared_ptr<Job> job) noexcept;
-	std::vector<std::shared_ptr<Job>> getJobs() const noexcept;
+	void AddJob(std::shared_ptr<Job> job) noexcept;
+	void RemoveJob(int jobId) noexcept;
+	std::vector<std::shared_ptr<Job>> GetJobs() const noexcept;
+	bool AcceptJob(int jobId) noexcept;
 
 private:
+
+	Job* FindJob(int jobId) const noexcept;
+
 	std::vector<std::shared_ptr<Job>> m_jobs;
 
 	// singleton

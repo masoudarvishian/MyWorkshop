@@ -16,8 +16,7 @@ void Vehicle::AddMalfunction(std::shared_ptr<Malfunction> value) noexcept
 {
     m_malfunctions.push_back(value);
 
-    // ADD JOB //
-    // 
+    ///// ADD A JOB /////
     // here we can fire an event, but because of time-limit/simplicity, I call the function directly
     std::map<int, std::string> toolsIdName;
     auto requiredTools = value->GetNeededTools();
@@ -26,7 +25,22 @@ void Vehicle::AddMalfunction(std::shared_ptr<Malfunction> value) noexcept
         toolsIdName[tool->GetId()] = tool->GetName();
     }
     auto job = std::make_shared<Job>(m_id, value->GetId(), m_type, value->GetName(), value->GetRewardAmount(), toolsIdName);
-    JobManager::GetInstance()->addJob(job);
+    JobManager::GetInstance()->AddJob(job);
+}
+
+void Vehicle::RemoveMalfunction(int malfunctionId) noexcept
+{
+    auto search = std::find_if(m_malfunctions.begin(), m_malfunctions.end(), [&malfunctionId](std::shared_ptr<Malfunction>& m) {
+        return malfunctionId == m.get()->GetId();
+    });
+
+    if (search != m_malfunctions.end())
+    {
+        auto index = std::distance(m_malfunctions.begin(), search);
+        auto iter = m_malfunctions.begin();
+        std::advance(iter, index);
+        m_malfunctions.erase(iter);
+    }
 }
 
 const int Vehicle::GetId() const noexcept

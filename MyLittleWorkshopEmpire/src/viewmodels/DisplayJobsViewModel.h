@@ -9,7 +9,7 @@
 class DisplayJobsViewModel
 {
 public:
-	const std::vector<std::string> getJobs() const noexcept;
+	const std::vector<std::string> GetJobs() const noexcept;
 };
 
 #endif // !DISPLAY_JOBS_VIEWMODEL_H

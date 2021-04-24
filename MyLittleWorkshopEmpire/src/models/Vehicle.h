@@ -15,6 +15,7 @@ public:
     ~Vehicle();
 
     void AddMalfunction(std::shared_ptr<Malfunction> value) noexcept;
+    void RemoveMalfunction(int malfunctionId) noexcept;
     const int GetId() const noexcept;
     const std::string GetType() const noexcept;
     const std::list<std::shared_ptr<Malfunction>> GetListOfMalfunction() const noexcept;

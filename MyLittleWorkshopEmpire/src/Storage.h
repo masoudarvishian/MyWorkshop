@@ -7,6 +7,8 @@
 #include "models/Player.h"
 #include "models/ToolManager.h"
 
+class Vehicle;
+
 class Storage
 {
 public:

@@ -1,13 +1,13 @@
 #include "DisplayJobsViewModel.h"
 
-const std::vector<std::string> DisplayJobsViewModel::getJobs() const noexcept
+const std::vector<std::string> DisplayJobsViewModel::GetJobs() const noexcept
 {
 	std::vector<std::string> jobDescriptionList;
-	auto jobs = JobManager::GetInstance()->getJobs();
+	auto jobs = JobManager::GetInstance()->GetJobs();
 
 	for (auto job : jobs)
 	{
-		std::string msg = "j #" + std::to_string(job->GetId()) + ". Vehicle: " + job->GetVehicleType() +
+		std::string msg = "#" + std::to_string(job->GetId()) + ". Vehicle: " + job->GetVehicleType() +
 			", Malfunction: " + job->GetMulfanctionName() + ", Reward: " + std::to_string(job->GetRewardAmount()) + "$, Tools:";
 
 		for (auto tool : job->GetToolsIdName())

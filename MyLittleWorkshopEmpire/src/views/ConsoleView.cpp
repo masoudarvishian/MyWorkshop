@@ -1,5 +1,6 @@
 #include "ConsoleView.h"
 #include "cmd/DisplayJobsCommand.h"
+#include "cmd/AcceptJobCommand.h"
 
 ConsoleView::ConsoleView()
 {
@@ -49,11 +50,20 @@ void ConsoleView::run()
 		break;
 		case 'j':   // jobs
 		{
+			// command for displaying jobs
 			m_cmdManager->add(std::make_unique<DisplayJobsCommand>());
 		}
 		break;
 		case 'a':   // accept job
 		{
+			auto id = 0;
+			if (command.length() > 1)
+			{
+				id = std::stoi(command.substr(1, command.length()));
+			}
+
+			// a command for accepting a job
+			m_cmdManager->add(std::make_unique<AcceptJobCommand>(id));
 		}
 		break;
 		case 's':   // shop

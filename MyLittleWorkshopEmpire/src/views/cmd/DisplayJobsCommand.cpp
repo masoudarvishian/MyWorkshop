@@ -4,7 +4,7 @@ void DisplayJobsCommand::execute(std::function<void()> callback)
 {
 	auto displayJobsViewModel = std::make_unique<DisplayJobsViewModel>();
 
-	auto list = displayJobsViewModel->getJobs();
+	auto list = displayJobsViewModel->GetJobs();
 
 	std::cout << "\n";
 	for (int i = 0; i < list.size(); ++i)

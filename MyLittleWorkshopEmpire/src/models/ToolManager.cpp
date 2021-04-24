@@ -32,7 +32,7 @@ Tool* ToolManager::FindToolByName(std::string name) const
 
 	if (search != m_tools.end())
 	{
-		int index = std::distance(m_tools.begin(), search);
+		auto index = std::distance(m_tools.begin(), search);
 		found = m_tools.at(index).get();
 	}
 
@@ -43,13 +43,13 @@ Tool* ToolManager::GetToolById(int toolId)
 {
 	Tool* found{ nullptr };
 
-	auto search = std::find_if(m_tools.begin(), m_tools.end(), [&toolId](std::shared_ptr<Tool> t) {
+	auto search = std::find_if(m_tools.begin(), m_tools.end(), [&toolId](std::shared_ptr<Tool> &t) {
 		return toolId == t.get()->GetId();
 	});
 
 	if (search != m_tools.end())
 	{
-		int index = std::distance(m_tools.begin(), search);
+		auto index = std::distance(m_tools.begin(), search);
 	    found = m_tools.at(index).get();
 	}
 

@@ -1,8 +1,8 @@
 // MyLittleWorkshopEmpire.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
-#include "views/ConsoleView.h"
 #include "Storage.h"
+#include "views/ConsoleView.h"
 
 int main()
 {

@@ -11,7 +11,7 @@ Player::~Player()
 	std::cout << "player #" << m_id << " is destroyed!\n";
 }
 
-bool Player::BuyTool(Tool* tool)
+bool Player::BuyTool(Tool* tool) noexcept
 {
 	auto success{ false };
 
@@ -37,7 +37,19 @@ bool Player::BuyTool(Tool* tool)
 	return success;
 }
 
-void Player::InitTool(Tool* tool)
+void Player::DamageTool(Tool* tool) noexcept
+{
+   auto currentUsageCount =	m_usableTools[tool];
+   currentUsageCount /= 2; // 50% damage
+   if (currentUsageCount < 0)
+   {
+	   currentUsageCount = 0;
+   }
+
+   m_usableTools[tool] = currentUsageCount;
+}
+
+void Player::InitTool(Tool* tool) noexcept
 {
 	auto wearCount{ tool->GetMaxWearCount() };
 	m_usableTools[tool] = wearCount;
@@ -48,7 +60,12 @@ const int Player::getMoney() const noexcept
 	return m_money;
 }
 
-const std::map<Tool*, int> Player::getUsableTools() const noexcept
+void Player::AddMoney(int amout) noexcept
+{
+	m_money += amout;
+}
+
+std::map<Tool*, int> Player::getUsableTools() const noexcept
 {
 	return m_usableTools;
 }

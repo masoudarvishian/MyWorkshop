@@ -15,17 +15,18 @@ public:
 	Player();
 	~Player();
 
-	bool BuyTool(Tool* tool);
-
-	void InitTool(Tool* tool);
+	bool BuyTool(Tool* tool) noexcept;
+	void DamageTool(Tool* tool) noexcept;
+	void InitTool(Tool* tool) noexcept;
 
 	const int getMoney() const noexcept;
+	void AddMoney(int amout) noexcept;
 
-	const std::map<Tool*, int> getUsableTools() const noexcept;
+	std::map<Tool*, int> getUsableTools() const noexcept;
 
 private:
 	int m_money;
-	std::map<Tool*, int> m_usableTools;
+	std::map<Tool*, int> m_usableTools; // <Tool,UsageCount>
 	int m_id;
 };
 
