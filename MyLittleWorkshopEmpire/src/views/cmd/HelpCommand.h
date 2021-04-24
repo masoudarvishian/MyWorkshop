@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include "Command.h"
-#include "../viewmodels/HelpViewModel.h"
+#include "../../viewmodels/HelpViewModel.h"
 
 class HelpCommand : public Command
 {

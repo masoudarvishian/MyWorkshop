@@ -24,7 +24,7 @@ public:
 
 private:
 	std::string m_name;
-	int m_price{ 0 };
+	int m_price;
 };
 
 #endif 

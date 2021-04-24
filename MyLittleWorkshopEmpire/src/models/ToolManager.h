@@ -28,7 +28,7 @@ public:
 
 	Tool* GetToolByIndex(int toolIndex);
 
-	void PrintToolInShop() const noexcept;
+	const std::map<int, std::shared_ptr<Tool>> getTools() const noexcept;
 
 private:
 	std::map<int, std::shared_ptr<Tool>> m_tools;

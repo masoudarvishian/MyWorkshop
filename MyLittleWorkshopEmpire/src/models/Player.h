@@ -15,11 +15,13 @@ public:
 	Player();
 	~Player();
 
-	void BuyTool(Tool* tool);
+	bool BuyTool(Tool* tool);
 
 	void InitTool(Tool* tool);
 
-	void PrintInventory();
+	const int getMoney() const noexcept;
+
+	const std::map<Tool*, int> getUsableTools() const noexcept;
 
 private:
 	int m_money;

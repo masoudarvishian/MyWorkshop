@@ -42,16 +42,15 @@ Tool* ToolManager::FindToolByName(std::string name) const
 
 Tool* ToolManager::GetToolByIndex(int toolIndex)
 {
+	if (toolIndex >= m_tools.size())
+	{
+		return nullptr;
+	}
+
 	return m_tools[toolIndex].get();
 }
 
-void ToolManager::PrintToolInShop() const noexcept
+const std::map<int, std::shared_ptr<Tool>> ToolManager::getTools() const noexcept
 {
-	printf("  Shop content:\n");
-	for (auto iter(m_tools.begin()); iter != m_tools.end(); iter++)
-	{
-		auto index{ iter->first };
-		auto tool{ iter->second.get() };
-		printf("  - %d: %s (%d$)\n", index, tool->GetName().c_str(), tool->GetPrice());
-	}
+	return m_tools;
 }

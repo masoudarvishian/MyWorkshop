@@ -8,8 +8,10 @@ Player::~Player()
 	std::cout << "player is destroyed!\n";
 }
 
-void Player::BuyTool(Tool* tool)
+bool Player::BuyTool(Tool* tool)
 {
+	auto success{ false };
+
 	auto price{ tool->GetPrice() };
 	auto wearCount{ tool->GetMaxWearCount() };
 
@@ -26,9 +28,10 @@ void Player::BuyTool(Tool* tool)
 			m_usableTools[tool] += wearCount;
 		}
 
-		printf("  You now have: %s x%d\n", tool->GetName().c_str(), m_usableTools[tool]);
-		printf("  and Money %d$\n", m_money);
+		success = true;
 	}
+
+	return success;
 }
 
 void Player::InitTool(Tool* tool)
@@ -37,15 +40,12 @@ void Player::InitTool(Tool* tool)
 	m_usableTools[tool] = wearCount;
 }
 
-void Player::PrintInventory()
+const int Player::getMoney() const noexcept
 {
-	printf("  Money %d$\n", m_money);
-	printf("  Tools:\n");
-	for (auto iter(m_usableTools.begin()); iter != m_usableTools.end(); iter++)
-	{
-		// issue fixed: iter->first should be tool* and iter->second should be int
-		auto tool{ iter->first };
-		auto usageCounter{ iter->second };
-		printf("  - %s x%d\n", tool->GetName().c_str(), usageCounter);
-	}
+	return m_money;
+}
+
+const std::map<Tool*, int> Player::getUsableTools() const noexcept
+{
+	return m_usableTools;
 }

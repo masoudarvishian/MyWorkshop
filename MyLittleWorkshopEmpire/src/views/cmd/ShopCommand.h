@@ -2,7 +2,7 @@
 #define SHOP_COMMAND_H
 
 #include "Command.h"
-#include "../../models/ToolManager.h"
+#include "../../viewmodels/ShopViewModel.h"
 
 class ShopCommand : public Command
 {

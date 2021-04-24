@@ -14,10 +14,7 @@ void Storage::init()
 	// init tools
 	ToolManager::GetInstance()->AddTool(std::make_shared<Tool>("Jack", 50));
 	ToolManager::GetInstance()->AddTool(std::make_shared<Tool>("Torque brace", 40));
-
-	// issue fixed: jumb cable was $50, but it should be 20$ based on document.
 	ToolManager::GetInstance()->AddTool(std::make_shared<Tool>("Jumper Cables", 20));
-
 	ToolManager::GetInstance()->AddTool(std::make_shared<Tool>("Phase tester", 10));
 	ToolManager::GetInstance()->AddTool(std::make_shared<Tool>("Hammer", 20));
 	ToolManager::GetInstance()->AddTool(std::make_shared<Tool>("Screwdriver", 10));

@@ -3,7 +3,9 @@
 void InventoryCommand::execute(std::function<void()> callback)
 {
 	auto playerViewModel = std::make_unique<PlayerViewModel>();
-	playerViewModel->printInventory();
+    auto msg = playerViewModel->getPrintInventoryMsg();
+
+	std::cout << msg;
 	
 	callback();
 }

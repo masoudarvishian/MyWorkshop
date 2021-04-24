@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\viewmodels\ShopViewModel.cpp" />
     <ClCompile Include="src\views\cmd\BuyToolCommand.cpp" />
     <ClCompile Include="src\views\cmd\CommandManager.cpp" />
     <ClCompile Include="src\views\cmd\HelpCommand.cpp" />
@@ -157,6 +158,7 @@
     <ClCompile Include="src\views\ConsoleView.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\viewmodels\ShopViewModel.h" />
     <ClInclude Include="src\views\cmd\BuyToolCommand.h" />
     <ClInclude Include="src\views\cmd\Command.h" />
     <ClInclude Include="src\views\cmd\CommandManager.h" />
