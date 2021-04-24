@@ -1,6 +1,6 @@
 #include "ToolManager.h"
 
-ToolManager* ToolManager::_instance{ nullptr };
+std::shared_ptr<ToolManager> ToolManager::_instance{ nullptr };
 
 ToolManager::~ToolManager()
 {
@@ -12,9 +12,9 @@ ToolManager* ToolManager::GetInstance() noexcept
 {
 	if (_instance == nullptr)
 	{
-		_instance = new ToolManager;
+		_instance = std::make_shared<ToolManager>();
 	}
-	return _instance;
+	return _instance.get();
 }
 
 void ToolManager::AddTool(std::shared_ptr<Tool> tool)

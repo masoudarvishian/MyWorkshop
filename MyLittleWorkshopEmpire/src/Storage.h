@@ -1,6 +1,7 @@
 #ifndef STORAGE_H
 #define STORAGE_H
 
+#include <memory>
 #include "models/Vehicle.h"
 #include "models/Tool.h"
 #include "models/Player.h"
@@ -27,7 +28,7 @@ private:
 	std::list<std::shared_ptr<Vehicle>> m_vehicles;
 
 	// singleton
-	static Storage* _instance;
+	static std::shared_ptr<Storage> _instance;
 };
 #endif // !STORAGE_H
 

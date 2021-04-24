@@ -34,7 +34,7 @@ private:
 	std::map<int, std::shared_ptr<Tool>> m_tools;
 
 	// singleton
-	static ToolManager* _instance;
+	static std::shared_ptr<ToolManager> _instance;
 };
 
 

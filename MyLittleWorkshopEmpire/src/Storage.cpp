@@ -1,6 +1,6 @@
 #include "Storage.h"
 
-Storage* Storage::_instance{ nullptr };
+std::shared_ptr<Storage> Storage::_instance{ nullptr };
 
 Storage::~Storage()
 {
@@ -102,7 +102,7 @@ Storage* Storage::GetInstance() noexcept
 {
 	if (_instance == nullptr)
 	{
-		_instance = new Storage;
+		_instance = std::make_shared<Storage>();
 	}
-	return _instance;
+	return _instance.get();
 }

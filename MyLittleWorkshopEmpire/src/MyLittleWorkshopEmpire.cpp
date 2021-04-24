@@ -13,9 +13,5 @@ int main()
 	auto consoleView = std::make_unique<ConsoleView>();
 	consoleView->display();
 
-	// release singleton memories
-	delete ToolManager::GetInstance();
-	delete Storage::GetInstance();
-
 	return EXIT_SUCCESS;
 }
