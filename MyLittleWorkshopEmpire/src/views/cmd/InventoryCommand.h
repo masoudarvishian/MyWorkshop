@@ -3,15 +3,11 @@
 
 #include <functional>
 #include "Command.h"
-#include "../Player.h"
+#include "../../viewmodels/PlayerViewModel.h"
 
 class InventoryCommand : public Command
 {
 public:
-	InventoryCommand(Player* player);
 	virtual void execute(std::function<void()> callback) override;
-
-private:
-	Player* m_player;
 };
 #endif

@@ -139,31 +139,41 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\cmd\BuyToolCommand.cpp" />
-    <ClCompile Include="src\cmd\CommandManager.cpp" />
-    <ClCompile Include="src\cmd\HelpCommand.cpp" />
-    <ClCompile Include="src\cmd\InventoryCommand.cpp" />
-    <ClCompile Include="src\cmd\ShopCommand.cpp" />
-    <ClCompile Include="src\Malfunction.cpp" />
+    <ClCompile Include="src\views\cmd\BuyToolCommand.cpp" />
+    <ClCompile Include="src\views\cmd\CommandManager.cpp" />
+    <ClCompile Include="src\views\cmd\HelpCommand.cpp" />
+    <ClCompile Include="src\views\cmd\InventoryCommand.cpp" />
+    <ClCompile Include="src\views\cmd\ShopCommand.cpp" />
+    <ClCompile Include="src\models\Malfunction.cpp" />
+    <ClCompile Include="src\models\HelpModel.cpp" />
     <ClCompile Include="src\MyLittleWorkshopEmpire.cpp" />
-    <ClCompile Include="src\Player.cpp" />
-    <ClCompile Include="src\Tool.cpp" />
-    <ClCompile Include="src\ToolManager.cpp" />
-    <ClCompile Include="src\Vehicle.cpp" />
+    <ClCompile Include="src\models\Player.cpp" />
+    <ClCompile Include="src\Storage.cpp" />
+    <ClCompile Include="src\models\Tool.cpp" />
+    <ClCompile Include="src\models\ToolManager.cpp" />
+    <ClCompile Include="src\models\Vehicle.cpp" />
+    <ClCompile Include="src\viewmodels\HelpViewModel.cpp" />
+    <ClCompile Include="src\viewmodels\PlayerViewModel.cpp" />
+    <ClCompile Include="src\views\ConsoleView.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\cmd\BuyToolCommand.h" />
-    <ClInclude Include="src\cmd\Command.h" />
-    <ClInclude Include="src\cmd\CommandManager.h" />
-    <ClInclude Include="src\cmd\HelpCommand.h" />
-    <ClInclude Include="src\cmd\InventoryCommand.h" />
-    <ClInclude Include="src\cmd\ShopCommand.h" />
-    <ClInclude Include="src\Malfunction.h" />
-    <ClInclude Include="src\Player.h" />
-    <ClInclude Include="src\cmd\TestCommand.h" />
-    <ClInclude Include="src\Tool.h" />
-    <ClInclude Include="src\ToolManager.h" />
-    <ClInclude Include="src\Vehicle.h" />
+    <ClInclude Include="src\views\cmd\BuyToolCommand.h" />
+    <ClInclude Include="src\views\cmd\Command.h" />
+    <ClInclude Include="src\views\cmd\CommandManager.h" />
+    <ClInclude Include="src\views\cmd\HelpCommand.h" />
+    <ClInclude Include="src\views\cmd\InventoryCommand.h" />
+    <ClInclude Include="src\views\cmd\ShopCommand.h" />
+    <ClInclude Include="src\models\Malfunction.h" />
+    <ClInclude Include="src\models\HelpModel.h" />
+    <ClInclude Include="src\models\Player.h" />
+    <ClInclude Include="src\views\cmd\TestCommand.h" />
+    <ClInclude Include="src\Storage.h" />
+    <ClInclude Include="src\models\Tool.h" />
+    <ClInclude Include="src\models\ToolManager.h" />
+    <ClInclude Include="src\models\Vehicle.h" />
+    <ClInclude Include="src\viewmodels\HelpViewModel.h" />
+    <ClInclude Include="src\viewmodels\PlayerViewModel.h" />
+    <ClInclude Include="src\views\ConsoleView.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

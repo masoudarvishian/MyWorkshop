@@ -2,7 +2,7 @@
 #define SHOP_COMMAND_H
 
 #include "Command.h"
-#include "../ToolManager.h"
+#include "../../models/ToolManager.h"
 
 class ShopCommand : public Command
 {

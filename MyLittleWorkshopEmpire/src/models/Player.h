@@ -1,9 +1,10 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include "Tool.h"
 #include <string>
 #include <map>
+#include <iostream>
+#include "Tool.h"
 
 constexpr int START_MONEY = 200;
 
