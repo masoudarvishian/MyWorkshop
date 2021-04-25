@@ -2,8 +2,8 @@
 
 void ShopCommand::execute(std::function<void()> callback)
 {
-	auto shopViewModel = std::make_unique<ShopViewModel>();
-	auto tools = shopViewModel->getTools();
+	auto m_shopViewModel = std::make_unique<ShopViewModel>();
+	auto tools = m_shopViewModel->getTools();
 
 	printf("  Shop content:\n");
 	for (auto iter(tools.begin()); iter != tools.end(); iter++)

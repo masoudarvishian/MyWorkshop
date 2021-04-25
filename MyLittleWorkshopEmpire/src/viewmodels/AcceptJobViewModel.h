@@ -7,7 +7,7 @@
 class AcceptJobViewModel
 {
 public:
-	const void AcceptJob(int jobId) noexcept;
+	bool AcceptJob(int jobId) noexcept;
 	const std::string GetStatusMsg() const noexcept;
 private:
 	std::string m_finalMsg;

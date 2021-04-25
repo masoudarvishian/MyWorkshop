@@ -1,14 +1,16 @@
 #include "AcceptJobViewModel.h"
 
-const void AcceptJobViewModel::AcceptJob(int jobId) noexcept
+bool AcceptJobViewModel::AcceptJob(int jobId) noexcept
 {
 	if (JobManager::GetInstance()->AcceptJob(jobId))
 	{
-		m_finalMsg = "Job #" + std::to_string(jobId) + " is succeeded";
+		m_finalMsg = "Completing job #" + std::to_string(jobId) + " is succeeded";
+		return true;
 	}
 	else
 	{
-		m_finalMsg = "Job #" + std::to_string(jobId) + " is failed!";
+		m_finalMsg = "Competing job #" + std::to_string(jobId) + " is failed!";
+		return false;
 	}
 }
 

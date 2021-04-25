@@ -2,9 +2,9 @@
 
 void DisplayJobsCommand::execute(std::function<void()> callback)
 {
-	auto displayJobsViewModel = std::make_unique<DisplayJobsViewModel>();
+	auto m_displayJobsViewModel = std::make_unique<DisplayJobsViewModel>();
 
-	auto jobs = displayJobsViewModel->GetJobs();
+	auto jobs = m_displayJobsViewModel->GetJobs();
 
 	for (auto job : jobs)
 	{

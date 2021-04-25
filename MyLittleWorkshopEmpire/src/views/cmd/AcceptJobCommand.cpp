@@ -6,10 +6,10 @@ AcceptJobCommand::AcceptJobCommand(int jobId) : m_jobId{ jobId }
 
 void AcceptJobCommand::execute(std::function<void()> callback)
 {
-	auto acceptJobViewModel = std::make_unique<AcceptJobViewModel>();
-	acceptJobViewModel->AcceptJob(m_jobId);
+	auto m_acceptJobViewModel = std::make_unique<AcceptJobViewModel>();
+	m_acceptJobViewModel->AcceptJob(m_jobId);
 
-	std::cout << acceptJobViewModel->GetStatusMsg();
+	std::cout << m_acceptJobViewModel->GetStatusMsg();
 
 	callback();
 }
