@@ -11,13 +11,17 @@ void WindowView::Run()
 
     /* Initialize the library */
     if (!glfwInit())
+    {
+        std::cout << "Failed to init glfw!\n";
         return;
+    }
 
     /* Create a windowed mode window and its OpenGL context */
-    window = glfwCreateWindow(640, 480, "My Workshop", NULL, NULL);
+    window = glfwCreateWindow(800, 680, "My Workshop", NULL, NULL);
     if (!window)
     {
         glfwTerminate();
+        std::cout << "Failed to create the window!\n";
         return;
     }
 
@@ -28,7 +32,7 @@ void WindowView::Run()
     while (!glfwWindowShouldClose(window))
     {
         /* Render here */
-        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+        glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
         /* Swap front and back buffers */

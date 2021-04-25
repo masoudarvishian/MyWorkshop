@@ -12,6 +12,7 @@ int main()
 	Storage::GetInstance()->init();
 
 	// init View
+	// note: you can init ConsoleView as well, since both WindowView & ConsoleView are derived from ViewBase :)
 	std::unique_ptr<ViewBase> view = std::make_unique<WindowView>();
 	view->Run();
 
