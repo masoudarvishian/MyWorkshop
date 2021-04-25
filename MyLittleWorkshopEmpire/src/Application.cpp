@@ -3,6 +3,7 @@
 #include "views/ConsoleView.h"
 #include "views/WindowView.h"
 
+using namespace UbiWorkshop::Models;
 using namespace UbiWorkshop::Views;
 
 int main()
