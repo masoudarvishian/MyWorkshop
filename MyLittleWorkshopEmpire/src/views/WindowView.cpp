@@ -26,7 +26,7 @@ void WindowView::Run()
 	}
 
 	/* Create a windowed mode window and its OpenGL context */
-	window = glfwCreateWindow(1230, 720, "My Workshop", NULL, NULL);
+	window = glfwCreateWindow(1230, 510, "My Workshop", NULL, NULL);
 	if (!window)
 	{
 		glfwTerminate();
@@ -84,13 +84,6 @@ void WindowView::Run()
 
 		// jobs window
 		DisplayJobs(window_flags, jobs);
-
-		// ShowDemoWindow
-		if (show_demo_window)
-		{
-			ImGui::SetNextWindowPos(ImVec2(650, 20), ImGuiCond_FirstUseEver); // Normally user code doesn't need/want to call this because positions are saved in .ini file anyway. Here we just want to make the demo initial state a bit more friendly!
-			ImGui::ShowDemoWindow(&show_demo_window);
-		}
 
 		/* Render here */
 		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
