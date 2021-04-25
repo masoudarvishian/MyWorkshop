@@ -2,8 +2,8 @@
 #define DISPLAY_JOBS_COMMAND_H
 
 #include <iostream>
-#include "Command.h"
-#include "../../viewmodels/DisplayJobsViewModel.h"
+#include "../Command.h"
+#include "../../../viewmodels/DisplayJobsViewModel.h"
 
 class DisplayJobsCommand : public Command
 {

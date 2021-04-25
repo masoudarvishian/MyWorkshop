@@ -1,6 +1,6 @@
 #include "ConsoleView.h"
-#include "cmd/DisplayJobsCommand.h"
-#include "cmd/AcceptJobCommand.h"
+#include "cmd/console-cmd/DisplayJobsCommand.h"
+#include "cmd/console-cmd/AcceptJobCommand.h"
 
 ConsoleView::ConsoleView()
 {

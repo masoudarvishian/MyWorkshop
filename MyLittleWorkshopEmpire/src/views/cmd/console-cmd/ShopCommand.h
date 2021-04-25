@@ -1,8 +1,8 @@
 #ifndef SHOP_COMMAND_H
 #define SHOP_COMMAND_H
 
-#include "Command.h"
-#include "../../viewmodels/ShopViewModel.h"
+#include "../Command.h"
+#include "../../../viewmodels/ShopViewModel.h"
 
 class ShopCommand : public Command
 {

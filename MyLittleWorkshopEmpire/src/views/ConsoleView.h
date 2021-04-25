@@ -5,11 +5,11 @@
 #include <string>
 #include "ViewBase.h"
 #include "cmd/CommandManager.h"
-#include "cmd/TestCommand.h"
-#include "cmd/HelpCommand.h"
-#include "cmd/InventoryCommand.h"
-#include "cmd/ShopCommand.h"
-#include "cmd/BuyToolCommand.h"
+#include "cmd/console-cmd/TestCommand.h"
+#include "cmd/console-cmd/HelpCommand.h"
+#include "cmd/console-cmd/InventoryCommand.h"
+#include "cmd/console-cmd/ShopCommand.h"
+#include "cmd/console-cmd/BuyToolCommand.h"
 
 class ConsoleView : public ViewBase
 {

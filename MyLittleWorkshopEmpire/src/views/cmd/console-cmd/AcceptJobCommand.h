@@ -2,8 +2,8 @@
 #define ACCEPT_JOB_COMMAND_H
 
 #include <memory>
-#include "Command.h"
-#include "../../viewmodels/AcceptJobViewModel.h"
+#include "../Command.h"
+#include "../../../viewmodels/AcceptJobViewModel.h"
 
 class AcceptJobCommand : public Command
 {

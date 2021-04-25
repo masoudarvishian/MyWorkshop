@@ -2,8 +2,8 @@
 #define INVENTORY_COMMAND_H
 
 #include <functional>
-#include "Command.h"
-#include "../../viewmodels/InventoryViewModel.h"
+#include "../Command.h"
+#include "../../../viewmodels/InventoryViewModel.h"
 
 class InventoryCommand : public Command
 {

@@ -2,8 +2,8 @@
 #define HELP_COMMAND_H
 
 #include <iostream>
-#include "Command.h"
-#include "../../viewmodels/HelpViewModel.h"
+#include "../Command.h"
+#include "../../../viewmodels/HelpViewModel.h"
 
 class HelpCommand : public Command
 {

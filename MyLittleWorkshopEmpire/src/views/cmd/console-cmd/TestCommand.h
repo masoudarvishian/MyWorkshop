@@ -1,7 +1,7 @@
 #ifndef TEST_COMMAND_H
 #define TEST_COMMAND_H
 
-#include "Command.h"
+#include "../Command.h"
 #include <iostream>
 
 class TestCommand : public Command

@@ -36,16 +36,16 @@
     <ClCompile Include="src\views\cmd\CommandManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\views\cmd\HelpCommand.cpp">
+    <ClCompile Include="src\views\cmd\console-cmd\HelpCommand.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\views\cmd\InventoryCommand.cpp">
+    <ClCompile Include="src\views\cmd\console-cmd\InventoryCommand.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\views\cmd\ShopCommand.cpp">
+    <ClCompile Include="src\views\cmd\console-cmd\ShopCommand.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\views\cmd\BuyToolCommand.cpp">
+    <ClCompile Include="src\views\cmd\console-cmd\BuyToolCommand.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\views\ConsoleView.cpp">
@@ -66,7 +66,7 @@
     <ClCompile Include="src\viewmodels\ShopViewModel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\views\cmd\DisplayJobsCommand.cpp">
+    <ClCompile Include="src\views\cmd\console-cmd\DisplayJobsCommand.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\viewmodels\DisplayJobsViewModel.cpp">
@@ -78,7 +78,7 @@
     <ClCompile Include="src\models\Job.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\views\cmd\AcceptJobCommand.cpp">
+    <ClCompile Include="src\views\cmd\console-cmd\AcceptJobCommand.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\viewmodels\AcceptJobViewModel.cpp">
@@ -131,19 +131,19 @@
     <ClInclude Include="src\views\cmd\Command.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\views\cmd\TestCommand.h">
+    <ClInclude Include="src\views\cmd\console-cmd\TestCommand.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\views\cmd\HelpCommand.h">
+    <ClInclude Include="src\views\cmd\console-cmd\HelpCommand.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\views\cmd\InventoryCommand.h">
+    <ClInclude Include="src\views\cmd\console-cmd\InventoryCommand.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\views\cmd\ShopCommand.h">
+    <ClInclude Include="src\views\cmd\console-cmd\ShopCommand.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\views\cmd\BuyToolCommand.h">
+    <ClInclude Include="src\views\cmd\console-cmd\BuyToolCommand.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\views\ConsoleView.h">
@@ -164,7 +164,7 @@
     <ClInclude Include="src\viewmodels\ShopViewModel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\views\cmd\DisplayJobsCommand.h">
+    <ClInclude Include="src\views\cmd\console-cmd\DisplayJobsCommand.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\viewmodels\DisplayJobsViewModel.h">
@@ -176,7 +176,7 @@
     <ClInclude Include="src\models\Job.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\views\cmd\AcceptJobCommand.h">
+    <ClInclude Include="src\views\cmd\console-cmd\AcceptJobCommand.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\viewmodels\AcceptJobViewModel.h">
