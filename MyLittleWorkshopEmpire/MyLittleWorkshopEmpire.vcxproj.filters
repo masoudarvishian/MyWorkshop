@@ -102,6 +102,12 @@
     <ClCompile Include="src\viewmodels\InventoryViewModel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\views\window-cmd\WBuyToolCommand.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\views\window-cmd\WAcceptJobCommand.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\models\Vehicle.h">
@@ -204,6 +210,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\viewmodels\InventoryViewModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\views\window-cmd\WBuyToolCommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\views\window-cmd\WAcceptJobCommand.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

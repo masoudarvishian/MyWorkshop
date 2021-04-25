@@ -2,11 +2,13 @@
 
 WindowView::WindowView()
 {
+	m_cmdManager = std::make_unique<CommandManager>();
+
 	m_shopViewModel = std::make_unique<ShopViewModel>();
-	m_playerViewModel = std::make_unique<PlayerViewModel>();
-	m_acceptJobViewModel = std::make_unique<AcceptJobViewModel>();
-	m_displayJobsViewModel = std::make_unique<DisplayJobsViewModel>();
-	m_inventoryViewModel = std::make_unique<InventoryViewModel>();
+	m_playerViewModel = std::make_shared<PlayerViewModel>();
+	m_acceptJobViewModel = std::make_shared<AcceptJobViewModel>();
+	m_displayJobsViewModel = std::make_shared<DisplayJobsViewModel>();
+	m_inventoryViewModel = std::make_shared<InventoryViewModel>();
 }
 
 WindowView::~WindowView()
@@ -86,7 +88,7 @@ void WindowView::Run()
 		DisplayJobs(window_flags, jobs);
 
 		/* Render here */
-		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+		glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		ImGui::Render();
@@ -160,17 +162,11 @@ void WindowView::DisplayStore(const ImGuiWindowFlags& window_flags, const std::v
 		auto label = "Buy##" + std::to_string(shopTools[i]->GetId());
 		if (ImGui::Button(label.c_str()))
 		{
-			if (m_playerViewModel->buyTool(shopTools[i]->GetId()))
-			{
-				m_inventoryViewModel->UpdateInventory();
-				break;
-			}
-			else
-			{
-				m_errorMsg = m_playerViewModel->GetBuyStatusMsg();
-				m_displayErrorPopup = true;
-				break;
-			}
+			// add a command to buy the tool
+			auto command = std::make_shared<WBuyToolCommand>(shopTools[i]->GetId(), m_playerViewModel.get(), m_inventoryViewModel.get(),
+				&m_errorMsg, &m_displayErrorPopup);
+
+			m_cmdManager->add(command);
 		}
 		ImGui::SameLine();
 		std::string toolStr = "Tool: " + shopTools[i]->GetName() + ", Price: " + std::to_string(shopTools[i]->GetPrice()) + '$';
@@ -188,37 +184,32 @@ void WindowView::DisplayStore(const ImGuiWindowFlags& window_flags, const std::v
 	ImGui::End();
 }
 
-void WindowView::DisplayJobs(const ImGuiWindowFlags& window_flags, std::vector<std::shared_ptr<Job>>& jobs) noexcept
+void WindowView::DisplayJobs(const ImGuiWindowFlags& window_flags, std::vector<JobViewModel>& jobs) noexcept
 {
 	ImGui::SetNextWindowSize(ImVec2(900, 485));
 	ImGui::Begin("Jobs", NULL, window_flags);
 	ImGui::SetWindowPos(ImVec2(320, 10)/*, ImGuiCond_FirstUseEver*/);
 
-	// show tools
+	// show jobs
 	for (int i = 0; i < jobs.size(); ++i)
 	{
-		auto label = "Complete##" + std::to_string(jobs[i]->GetId());
+		auto label = "Complete##" + std::to_string(jobs[i].id);
 		if (ImGui::Button(label.c_str()))
 		{
-			if (m_acceptJobViewModel->AcceptJob(jobs[i]->GetId()))
-			{
-				m_inventoryViewModel->UpdateInventory();
-				jobs = m_displayJobsViewModel->GetJobs();
-				break;
-			}
-			else
-			{
-				m_errorMsg = m_acceptJobViewModel->GetStatusMsg();
-				m_displayErrorPopup = true;
-				break;
-			}
+			// add a command to complete the job
+			auto command = std::make_shared<WAcceptJobCommand>(jobs[i].id, m_acceptJobViewModel.get(), m_inventoryViewModel.get(), m_displayJobsViewModel.get(),
+			  jobs, &m_errorMsg, &m_displayErrorPopup);
+
+			m_cmdManager->add(command);
+
+			break;
 		}
 		ImGui::SameLine();
 
-		auto str = "Reward: $" + std::to_string(jobs[i]->GetRewardAmount()) + ", Vehicle: " + jobs[i]->GetVehicleType() +
-			", Malfunction: " + jobs[i]->GetMulfanctionName() + ", Tools: ";
+		auto str = "Reward: $" + std::to_string(jobs[i].rewardAmount) + ", Vehicle: " + jobs[i].vehicleType +
+			", Malfunction: " + jobs[i].malfunctionName + ", Tools: ";
 
-		for (auto t : jobs[i]->GetToolsIdName())
+		for (auto t : jobs[i].toolsIdName)
 		{
 			str += t.second + " / ";
 		}
