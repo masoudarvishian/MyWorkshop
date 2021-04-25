@@ -1,7 +1,30 @@
 #include "DisplayJobsViewModel.h"
 
-const std::vector<std::shared_ptr<Job>> DisplayJobsViewModel::GetJobs() const noexcept
+const std::vector<JobViewModel> DisplayJobsViewModel::GetJobs() const noexcept
 {
-	std::vector<std::string> jobDescriptionList;
-	return JobManager::GetInstance()->GetJobs();
+	auto jobs = JobManager::GetInstance()->GetJobs();
+
+	std::vector<JobViewModel> jobViewModels;
+
+	// map data to viewmodel
+	for (auto job : jobs)
+	{
+		JobViewModel jViewModel;
+		jViewModel.id = job->GetId();
+		jViewModel.malfunctionId = job->GetMalfunctionId();
+		jViewModel.malfunctionName = job->GetMalfanctionName();
+		jViewModel.rewardAmount = job->GetRewardAmount();
+		jViewModel.vehicleId = job->GetVehicleId();
+		jViewModel.vehicleType = job->GetVehicleType();
+
+		for (auto item : job->GetToolsIdName())
+		{
+			jViewModel.toolsIdName[item.first] = item.second;
+		}
+
+		jobViewModels.push_back(jViewModel);
+	}
+
+
+	return jobViewModels;
 }

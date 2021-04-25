@@ -34,7 +34,7 @@ const std::string Job::GetVehicleType() const noexcept
 	return m_vehicleType;
 }
 
-const std::string Job::GetMulfanctionName() const noexcept
+const std::string Job::GetMalfanctionName() const noexcept
 {
 	return m_malfunctionName;
 }

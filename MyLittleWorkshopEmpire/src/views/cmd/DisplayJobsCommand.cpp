@@ -8,10 +8,10 @@ void DisplayJobsCommand::execute(std::function<void()> callback)
 
 	for (auto job : jobs)
 	{
-		std::string msg = "#" + std::to_string(job->GetId()) + ". Vehicle: " + job->GetVehicleType() +
-			", Malfunction: " + job->GetMulfanctionName() + ", Reward: " + std::to_string(job->GetRewardAmount()) + "$, Tools:";
+		std::string msg = "#" + std::to_string(job.id) + ". Vehicle: " + job.vehicleType +
+			", Malfunction: " + job.malfunctionName + ", Reward: " + std::to_string(job.rewardAmount) + "$, Tools:";
 
-		for (auto tool : job->GetToolsIdName())
+		for (auto tool : job.toolsIdName)
 		{
 			msg += (" #" + std::to_string(tool.first) + " " + tool.second + " /");
 		}

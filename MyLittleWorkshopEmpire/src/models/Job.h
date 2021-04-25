@@ -16,7 +16,7 @@ public:
 	const int GetVehicleId() const noexcept;
 	const int GetMalfunctionId() const noexcept;
 	const std::string GetVehicleType() const noexcept;
-	const std::string GetMulfanctionName() const noexcept;
+	const std::string GetMalfanctionName() const noexcept;
 	const int GetRewardAmount() const noexcept;
 	const std::map<int, std::string> GetToolsIdName() const noexcept;
 private:

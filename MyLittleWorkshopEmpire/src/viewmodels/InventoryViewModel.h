@@ -12,9 +12,8 @@ public:
 	const int GetMoney() const noexcept;
 	const std::map<std::string, int> GetTools() const noexcept;
 private:
-	int m_money;
+	int m_money{ 0 };
 	std::map<std::string, int> m_tools;
 };
 
 #endif // !INVENTORY_VIEWMODEL_H
-
