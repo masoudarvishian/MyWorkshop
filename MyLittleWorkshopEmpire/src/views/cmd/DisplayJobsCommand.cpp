@@ -7,9 +7,9 @@ void DisplayJobsCommand::execute(std::function<void()> callback)
 	auto list = displayJobsViewModel->GetJobs();
 
 	std::cout << "\n";
-	for (int i = 0; i < list.size(); ++i)
+	for (auto iter {list.begin()}; iter != list.end(); ++iter)
 	{
-		std::cout << list[i] << '\n';
+		std::cout << *iter << '\n';
 		std::cout << "-------------------------------\n";
 	}
 
