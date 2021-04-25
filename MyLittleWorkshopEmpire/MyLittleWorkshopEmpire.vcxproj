@@ -170,7 +170,7 @@
     <ClCompile Include="src\views\cmd\console-cmd\ShopCommand.cpp" />
     <ClCompile Include="src\models\Malfunction.cpp" />
     <ClCompile Include="src\models\HelpModel.cpp" />
-    <ClCompile Include="src\MyLittleWorkshopEmpire.cpp" />
+    <ClCompile Include="src\Application.cpp" />
     <ClCompile Include="src\models\Player.cpp" />
     <ClCompile Include="src\Storage.cpp" />
     <ClCompile Include="src\models\Tool.cpp" />
