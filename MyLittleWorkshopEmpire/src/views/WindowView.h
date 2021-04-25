@@ -10,6 +10,13 @@
 #include "ViewBase.h"
 #include <iostream>
 
+// include viewmodels
+#include "../viewmodels/InventoryViewModel.h"
+#include "../viewmodels/ShopViewModel.h"
+#include "../viewmodels/PlayerViewModel.h"
+#include "../viewmodels/DisplayJobsViewModel.h"
+#include "../viewmodels/AcceptJobViewModel.h"
+
 class WindowView : public ViewBase
 {
 public:

@@ -159,6 +159,7 @@
     <ClCompile Include="src\vendor\imgui\imgui_impl_glfw_gl3.cpp" />
     <ClCompile Include="src\viewmodels\AcceptJobViewModel.cpp" />
     <ClCompile Include="src\viewmodels\DisplayJobsViewModel.cpp" />
+    <ClCompile Include="src\viewmodels\InventoryViewModel.cpp" />
     <ClCompile Include="src\viewmodels\ShopViewModel.cpp" />
     <ClCompile Include="src\views\cmd\AcceptJobCommand.cpp" />
     <ClCompile Include="src\views\cmd\BuyToolCommand.cpp" />
@@ -192,6 +193,7 @@
     <ClInclude Include="src\vendor\imgui\stb_truetype.h" />
     <ClInclude Include="src\viewmodels\AcceptJobViewModel.h" />
     <ClInclude Include="src\viewmodels\DisplayJobsViewModel.h" />
+    <ClInclude Include="src\viewmodels\InventoryViewModel.h" />
     <ClInclude Include="src\viewmodels\ShopViewModel.h" />
     <ClInclude Include="src\views\cmd\AcceptJobCommand.h" />
     <ClInclude Include="src\views\cmd\BuyToolCommand.h" />

@@ -7,7 +7,6 @@
 class PlayerViewModel
 {
 public:
-	std::string getPrintInventoryMsg();
 	void buyTool(int toolIndex);
 	std::string buyMessage;
 };

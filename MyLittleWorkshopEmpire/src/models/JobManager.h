@@ -26,7 +26,7 @@ public:
 
 	void AddJob(std::shared_ptr<Job> job) noexcept;
 	void RemoveJob(int jobId) noexcept;
-	std::vector<std::shared_ptr<Job>> GetJobs() const noexcept;
+	const std::vector<std::shared_ptr<Job>> GetJobs() const noexcept;
 	bool AcceptJob(int jobId) noexcept;
 
 private:

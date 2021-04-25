@@ -2,92 +2,181 @@
 
 WindowView::~WindowView()
 {
-    std::cout << "WindowView is destroyed!\n";
+	std::cout << "WindowView is destroyed!\n";
 }
 
 void WindowView::Run()
 {
-    GLFWwindow* window;
+	GLFWwindow* window;
 
-    /* Initialize the library */
-    if (!glfwInit())
-    {
-        std::cout << "Failed to init glfw!\n";
-        return;
-    }
+	/* Initialize the library */
+	if (!glfwInit())
+	{
+		std::cout << "Failed to init glfw!\n";
+		return;
+	}
 
-    /* Create a windowed mode window and its OpenGL context */
-    window = glfwCreateWindow(800, 680, "My Workshop", NULL, NULL);
-    if (!window)
-    {
-        glfwTerminate();
-        std::cout << "Failed to create the window!\n";
-        return;
-    }
+	/* Create a windowed mode window and its OpenGL context */
+	window = glfwCreateWindow(1230, 720, "My Workshop", NULL, NULL);
+	if (!window)
+	{
+		glfwTerminate();
+		std::cout << "Failed to create the window!\n";
+		return;
+	}
 
-    /* Make the window's context current */
-    glfwMakeContextCurrent(window);
+	/* Make the window's context current */
+	glfwMakeContextCurrent(window);
 
-    /* init glew */
-    if (glewInit() != GLEW_OK)
-    {
-        std::cout << "Failed to init glew!\n";
-        return;
-    }
+	/* init glew */
+	if (glewInit() != GLEW_OK)
+	{
+		std::cout << "Failed to init glew!\n";
+		return;
+	}
 
-    /* init ImGui */
-    ImGui::CreateContext();
-    ImGuiIO& io = ImGui::GetIO(); (void)io;
-    ImGui_ImplGlfwGL3_Init(window, true);
+	/* init ImGui */
+	ImGui::CreateContext();
+	ImGuiIO& io = ImGui::GetIO(); (void)io;
+	ImGui_ImplGlfwGL3_Init(window, true);
 
-    // Setup style
-    ImGui::StyleColorsDark();
+	// Setup style
+	//ImGui::StyleColorsDark();
+	ImGui::StyleColorsClassic();
 
-    bool show_demo_window = true;
-    bool show_another_window = false;
-    ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
+	bool show_demo_window = true;
+	bool show_another_window = false;
+	ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
-    /* Loop until the user closes the window */
-    while (!glfwWindowShouldClose(window))
-    {
-        /* Poll for and process events */
-        glfwPollEvents();
+	auto inventoryViewModel = std::make_unique<InventoryViewModel>();
+	inventoryViewModel->UpdateInventory();
 
-        ImGui_ImplGlfwGL3_NewFrame();
+	auto shopViewModel = std::make_unique<ShopViewModel>();
+	auto shopTools = shopViewModel->getTools();
 
-        // 1. Show a simple window.
-        // Tip: if we don't call ImGui::Begin()/ImGui::End() the widgets automatically appears in a window called "Debug".
-        {
-            static float f = 0.0f;
-            static int counter = 0;
-            ImGui::Text("Hello, world!");                           // Display some text (you can use a format string too)
-            ImGui::SliderFloat("float", &f, 0.0f, 1.0f);            // Edit 1 float using a slider from 0.0f to 1.0f    
-            ImGui::ColorEdit3("clear color", (float*)&clear_color); // Edit 3 floats representing a color
+	auto playerViewModel = std::make_unique<PlayerViewModel>();
 
-            ImGui::Checkbox("Demo Window", &show_demo_window);      // Edit bools storing our windows open/close state
-            ImGui::Checkbox("Another Window", &show_another_window);
+	auto displayJobsViewModel = std::make_unique<DisplayJobsViewModel>();
+	auto jobs = displayJobsViewModel->GetJobs();
 
-            if (ImGui::Button("Button"))                            // Buttons return true when clicked (NB: most widgets return true when edited/activated)
-                counter++;
-            ImGui::SameLine();
-            ImGui::Text("counter = %d", counter);
+	auto acceptJobViewModel = std::make_unique<AcceptJobViewModel>();
 
-            ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
-        }
+	/* Loop until the user closes the window */
+	while (!glfwWindowShouldClose(window))
+	{
+		/* Poll for and process events */
+		glfwPollEvents();
 
-        /* Render here */
-        glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT);
+		ImGui_ImplGlfwGL3_NewFrame();
 
-        ImGui::Render();
-        ImGui_ImplGlfwGL3_RenderDrawData(ImGui::GetDrawData());
+		ImGuiWindowFlags window_flags = 0;
+		window_flags |= ImGuiWindowFlags_NoMove;
+		window_flags |= ImGuiWindowFlags_NoResize;
+		window_flags |= ImGuiWindowFlags_NoCollapse;
 
-        /* Swap front and back buffers */
-        glfwSwapBuffers(window);
-    }
+		// inventory window
+		{
+			ImGui::SetNextWindowSize(ImVec2(300, 180));
+			ImGui::Begin("Inventory", NULL, window_flags);
+			ImGui::SetWindowPos(ImVec2(10, 10)/*, ImGuiCond_FirstUseEver*/);
 
-    // Cleanup
-    ImGui_ImplGlfwGL3_Shutdown();
-    ImGui::DestroyContext();
-    glfwTerminate();
+			// show money
+			ImGui::Text("Money: $%d", inventoryViewModel->GetMoney());
+
+			ImGui::NewLine();
+
+			// show tools
+			for (auto t : inventoryViewModel->GetTools())
+			{
+				std::string toolStr = "Tool: " + t.first + ", Usage: x" + std::to_string(t.second);
+				ImGui::Text(toolStr.c_str());
+			}
+
+			ImGui::End();
+		}
+
+		// store window
+		{
+			ImGui::SetNextWindowSize(ImVec2(300, 190));
+			ImGui::Begin("Store", NULL, window_flags);
+			ImGui::SetWindowPos(ImVec2(10, 200)/*, ImGuiCond_FirstUseEver*/);
+
+			ImGui::NewLine();
+
+			// show tools
+			for (int i = 0; i < shopTools.size(); ++i)
+			{
+				auto label = "Buy##" + std::to_string(shopTools[i]->GetId());
+				if (ImGui::Button(label.c_str()))
+				{
+					playerViewModel->buyTool(shopTools[i]->GetId());
+					inventoryViewModel->UpdateInventory();
+					break;
+				}
+				ImGui::SameLine();
+				std::string toolStr = "Tool: " + shopTools[i]->GetName() + ", Price: " + std::to_string(shopTools[i]->GetPrice()) + '$';
+				ImGui::Text(toolStr.c_str());
+			}
+
+			ImGui::End();
+		}
+
+		// jobs window
+		{
+			ImGui::SetNextWindowSize(ImVec2(900, 380));
+			ImGui::Begin("Jobs", NULL, window_flags);
+			ImGui::SetWindowPos(ImVec2(320, 10)/*, ImGuiCond_FirstUseEver*/);
+
+			ImGui::NewLine();
+
+			// show tools
+			for (int i = 0; i < jobs.size(); ++i)
+			{
+				auto label = "Complete##" + std::to_string(jobs[i]->GetId());
+				if (ImGui::Button(label.c_str()))
+				{
+					acceptJobViewModel->AcceptJob(jobs[i]->GetId());
+
+					inventoryViewModel->UpdateInventory();
+					jobs = displayJobsViewModel->GetJobs();
+					break;
+				}
+				ImGui::SameLine();
+
+				auto str = "Reward: $" + std::to_string(jobs[i]->GetRewardAmount()) + ", Vehicle: " + jobs[i]->GetVehicleType() + 
+						   ", Malfunction: " + jobs[i]->GetMulfanctionName() + ", Tools: ";
+
+				for (auto t : jobs[i]->GetToolsIdName())
+				{
+					str += t.second + " / ";
+				}
+
+				ImGui::Text(str.c_str());
+			}
+
+			ImGui::End();
+		}
+
+		// ShowDemoWindow
+		if (show_demo_window)
+		{
+			ImGui::SetNextWindowPos(ImVec2(650, 20), ImGuiCond_FirstUseEver); // Normally user code doesn't need/want to call this because positions are saved in .ini file anyway. Here we just want to make the demo initial state a bit more friendly!
+			ImGui::ShowDemoWindow(&show_demo_window);
+		}
+
+		/* Render here */
+		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT);
+
+		ImGui::Render();
+		ImGui_ImplGlfwGL3_RenderDrawData(ImGui::GetDrawData());
+
+		/* Swap front and back buffers */
+		glfwSwapBuffers(window);
+	}
+
+	// Cleanup
+	ImGui_ImplGlfwGL3_Shutdown();
+	ImGui::DestroyContext();
+	glfwTerminate();
 }

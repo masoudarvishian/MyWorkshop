@@ -3,7 +3,7 @@
 
 #include <functional>
 #include "Command.h"
-#include "../../viewmodels/PlayerViewModel.h"
+#include "../../viewmodels/InventoryViewModel.h"
 
 class InventoryCommand : public Command
 {

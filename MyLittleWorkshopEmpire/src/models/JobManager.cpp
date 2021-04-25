@@ -34,7 +34,7 @@ void JobManager::RemoveJob(int jobId) noexcept
 	}
 }
 
-std::vector<std::shared_ptr<Job>> JobManager::GetJobs() const noexcept
+const std::vector<std::shared_ptr<Job>> JobManager::GetJobs() const noexcept
 {
 	return m_jobs;
 }
