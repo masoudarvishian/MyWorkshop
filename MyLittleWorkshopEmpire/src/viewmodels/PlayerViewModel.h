@@ -7,8 +7,10 @@
 class PlayerViewModel
 {
 public:
-	void buyTool(int toolIndex);
-	std::string buyMessage;
+	const bool buyTool(int toolIndex) noexcept;
+	const std::string GetBuyStatusMsg() const noexcept;
+private:
+	std::string m_buyMessage;
 };
 
 #endif // !PLAYER_VIEWMODEL_H

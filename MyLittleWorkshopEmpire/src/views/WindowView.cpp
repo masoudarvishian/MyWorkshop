@@ -52,6 +52,8 @@ void WindowView::Run()
 	// Setup style
 	ImGui::StyleColorsClassic();
 
+	ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(10, 15));
+
 	bool show_demo_window = true;
 	ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
@@ -126,33 +128,38 @@ void WindowView::ErrorPopup(const std::string& errMsg) noexcept
 
 void WindowView::DisplayInventory(const ImGuiWindowFlags& window_flags) const noexcept
 {
-	ImGui::SetNextWindowSize(ImVec2(300, 180));
+	ImGui::SetNextWindowSize(ImVec2(300, 235));
 	ImGui::Begin("Inventory", NULL, window_flags);
 	ImGui::SetWindowPos(ImVec2(10, 10)/*, ImGuiCond_FirstUseEver*/);
 
 	// show money
 	ImGui::Text("Money: $%d", m_inventoryViewModel->GetMoney());
 
-	ImGui::NewLine();
 	ImGui::Separator();
 
 	// show tools
 	for (auto t : m_inventoryViewModel->GetTools())
 	{
 		std::string toolStr = "Tool: " + t.first + ", Usage: x" + std::to_string(t.second);
-		ImGui::Text(toolStr.c_str());
+
+		if (t.second <= 0) 
+		{
+			ImGui::TextColored(ImVec4(1.0f, 0.0f, 0.0f, 1.0f), toolStr.c_str());
+		}
+		else 
+		{
+			ImGui::Text(toolStr.c_str());
+		}
 	}
 
 	ImGui::End();
 }
 
-void WindowView::DisplayStore(const ImGuiWindowFlags& window_flags, const std::vector<std::shared_ptr<Tool>>& shopTools) const noexcept
+void WindowView::DisplayStore(const ImGuiWindowFlags& window_flags, const std::vector<std::shared_ptr<Tool>>& shopTools) noexcept
 {
-	ImGui::SetNextWindowSize(ImVec2(300, 190));
+	ImGui::SetNextWindowSize(ImVec2(300, 240));
 	ImGui::Begin("Store", NULL, window_flags);
-	ImGui::SetWindowPos(ImVec2(10, 200)/*, ImGuiCond_FirstUseEver*/);
-
-	ImGui::NewLine();
+	ImGui::SetWindowPos(ImVec2(10, 255)/*, ImGuiCond_FirstUseEver*/);
 
 	// show tools
 	for (int i = 0; i < shopTools.size(); ++i)
@@ -160,25 +167,39 @@ void WindowView::DisplayStore(const ImGuiWindowFlags& window_flags, const std::v
 		auto label = "Buy##" + std::to_string(shopTools[i]->GetId());
 		if (ImGui::Button(label.c_str()))
 		{
-			m_playerViewModel->buyTool(shopTools[i]->GetId());
-			m_inventoryViewModel->UpdateInventory();
-			break;
+			if (m_playerViewModel->buyTool(shopTools[i]->GetId()))
+			{
+				m_inventoryViewModel->UpdateInventory();
+				break;
+			}
+			else
+			{
+				m_errorMsg = m_playerViewModel->GetBuyStatusMsg();
+				m_displayErrorPopup = true;
+				break;
+			}
 		}
 		ImGui::SameLine();
 		std::string toolStr = "Tool: " + shopTools[i]->GetName() + ", Price: " + std::to_string(shopTools[i]->GetPrice()) + '$';
-		ImGui::Text(toolStr.c_str());
+		
+		if (m_inventoryViewModel->GetMoney() >= shopTools[i]->GetPrice())
+		{
+			ImGui::Text(toolStr.c_str());
+		}
+		else
+		{
+			ImGui::TextColored(ImVec4(1.0f, 0.0f, 0.0f, 1.0f), toolStr.c_str());
+		}
 	}
 
 	ImGui::End();
 }
 
-void WindowView::DisplayJobs(const ImGuiWindowFlags& window_flags, std::vector<std::shared_ptr<Job>> &jobs) noexcept
+void WindowView::DisplayJobs(const ImGuiWindowFlags& window_flags, std::vector<std::shared_ptr<Job>>& jobs) noexcept
 {
-	ImGui::SetNextWindowSize(ImVec2(900, 380));
+	ImGui::SetNextWindowSize(ImVec2(900, 485));
 	ImGui::Begin("Jobs", NULL, window_flags);
 	ImGui::SetWindowPos(ImVec2(320, 10)/*, ImGuiCond_FirstUseEver*/);
-
-	ImGui::NewLine();
 
 	// show tools
 	for (int i = 0; i < jobs.size(); ++i)

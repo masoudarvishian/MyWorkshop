@@ -9,7 +9,7 @@ void BuyToolCommand::execute(std::function<void()> callback)
 	
 	m_playerViewModel->buyTool(m_toolId);
 
-	std::cout << m_playerViewModel->buyMessage;
+	std::cout << m_playerViewModel->GetBuyStatusMsg() << std::endl;
 	
 	callback();
 }

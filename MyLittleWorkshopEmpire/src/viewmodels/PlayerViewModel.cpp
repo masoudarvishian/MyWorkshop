@@ -1,12 +1,12 @@
 #include "PlayerViewModel.h"
 
-void PlayerViewModel::buyTool(int toolId)
+const bool PlayerViewModel::buyTool(int toolId) noexcept
 {
 	auto toolToBuy = ToolManager::GetInstance()->GetToolById(toolId);
 	if (!toolToBuy)
 	{
-		buyMessage = "tool not found!";
-		return;
+		m_buyMessage = "tool not found!";
+		return false;
 	}
 
 	auto player = Storage::GetInstance()->getPlayer();
@@ -19,10 +19,15 @@ void PlayerViewModel::buyTool(int toolId)
 		buyMessageStream << "  You now have: " << toolToBuy->GetName() << " x" << usableTools[toolToBuy] << "\n"
 			"  and Money $" << player->getMoney() << "$\n";
 
-		buyMessage = buyMessageStream.str();
+		m_buyMessage = buyMessageStream.str();
+		return true;
 	}
-	else
-	{
-		buyMessage = "Failed to buy!";
-	}
+	
+	m_buyMessage = "Failed to buy!";
+	return false;
+}
+
+const std::string PlayerViewModel::GetBuyStatusMsg() const noexcept
+{
+	return m_buyMessage;
 }
