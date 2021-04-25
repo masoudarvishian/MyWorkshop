@@ -157,7 +157,7 @@ void WindowView::DisplayStore(const ImGuiWindowFlags& window_flags, const std::v
 	ImGui::SetWindowPos(ImVec2(10, 255)/*, ImGuiCond_FirstUseEver*/);
 
 	// show tools
-	for (int i = 0; i < shopTools.size(); ++i)
+	for (auto i = 0; i < shopTools.size(); ++i)
 	{
 		auto label = "Buy##" + std::to_string(shopTools[i]->GetId());
 		if (ImGui::Button(label.c_str()))
@@ -191,7 +191,7 @@ void WindowView::DisplayJobs(const ImGuiWindowFlags& window_flags, std::vector<J
 	ImGui::SetWindowPos(ImVec2(320, 10)/*, ImGuiCond_FirstUseEver*/);
 
 	// show jobs
-	for (int i = 0; i < jobs.size(); ++i)
+	for (auto i = 0; i < jobs.size(); ++i)
 	{
 		auto label = "Complete##" + std::to_string(jobs[i].id);
 		if (ImGui::Button(label.c_str()))
