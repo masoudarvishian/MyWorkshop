@@ -18,8 +18,8 @@
 #include "../viewmodels/AcceptJobViewModel.h"
 #include "cmd/CommandManager.h"
 #include "cmd/Command.h"
-#include "window-cmd/WBuyToolCommand.h"
-#include "window-cmd/WAcceptJobCommand.h"
+#include "cmd/window-cmd/WBuyToolCommand.h"
+#include "cmd/window-cmd/WAcceptJobCommand.h"
 
 class WindowView : public ViewBase
 {

@@ -179,8 +179,8 @@
     <ClCompile Include="src\viewmodels\HelpViewModel.cpp" />
     <ClCompile Include="src\viewmodels\PlayerViewModel.cpp" />
     <ClCompile Include="src\views\ConsoleView.cpp" />
-    <ClCompile Include="src\views\window-cmd\WAcceptJobCommand.cpp" />
-    <ClCompile Include="src\views\window-cmd\WBuyToolCommand.cpp" />
+    <ClCompile Include="src\views\cmd\window-cmd\WAcceptJobCommand.cpp" />
+    <ClCompile Include="src\views\cmd\window-cmd\WBuyToolCommand.cpp" />
     <ClCompile Include="src\views\WindowView.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -217,8 +217,8 @@
     <ClInclude Include="src\viewmodels\PlayerViewModel.h" />
     <ClInclude Include="src\views\ConsoleView.h" />
     <ClInclude Include="src\views\ViewBase.h" />
-    <ClInclude Include="src\views\window-cmd\WAcceptJobCommand.h" />
-    <ClInclude Include="src\views\window-cmd\WBuyToolCommand.h" />
+    <ClInclude Include="src\views\cmd\window-cmd\WAcceptJobCommand.h" />
+    <ClInclude Include="src\views\cmd\window-cmd\WBuyToolCommand.h" />
     <ClInclude Include="src\views\WindowView.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

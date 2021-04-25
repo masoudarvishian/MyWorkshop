@@ -1,10 +1,10 @@
 #ifndef W_ACCEPT_JOB_COMMAND_H
 #define W_ACCEPT_JOB_COMMAND_H
 
-#include "../cmd/Command.h"
-#include "../../viewmodels/AcceptJobViewModel.h"
-#include "../../viewmodels/InventoryViewModel.h"
-#include "../../viewmodels/DisplayJobsViewModel.h"
+#include "../Command.h"
+#include "../../../viewmodels/AcceptJobViewModel.h"
+#include "../../../viewmodels/InventoryViewModel.h"
+#include "../../../viewmodels/DisplayJobsViewModel.h"
 
 class WAcceptJobCommand : public Command
 {

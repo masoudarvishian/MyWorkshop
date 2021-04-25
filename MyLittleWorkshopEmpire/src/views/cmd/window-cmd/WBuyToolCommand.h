@@ -1,9 +1,9 @@
 #ifndef W_BUY_TOOL_COMMAND_H
 #define W_BUY_TOOL_COMMAND_H
 
-#include "../cmd/Command.h"
-#include "../../viewmodels/PlayerViewModel.h"
-#include "../../viewmodels/InventoryViewModel.h"
+#include "../Command.h"
+#include "../../../viewmodels/PlayerViewModel.h"
+#include "../../../viewmodels/InventoryViewModel.h"
 
 class WBuyToolCommand : public Command
 {
