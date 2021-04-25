@@ -2,16 +2,18 @@
 //
 
 #include "Storage.h"
+#include "views/ViewBase.h"
 #include "views/ConsoleView.h"
+#include "views/WindowView.h"
 
 int main()
 {
 	// init storage
 	Storage::GetInstance()->init();
 
-	// handle UI
-	auto consoleView = std::make_unique<ConsoleView>();
-	consoleView->run();
+	// init View
+	std::unique_ptr<ViewBase> view = std::make_unique<WindowView>();
+	view->Run();
 
 	return EXIT_SUCCESS;
 }

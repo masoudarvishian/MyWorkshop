@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include "ViewBase.h"
 #include "cmd/CommandManager.h"
 #include "cmd/TestCommand.h"
 #include "cmd/HelpCommand.h"
@@ -10,12 +11,12 @@
 #include "cmd/ShopCommand.h"
 #include "cmd/BuyToolCommand.h"
 
-class ConsoleView
+class ConsoleView : public ViewBase
 {
 public:
 	ConsoleView();
 	~ConsoleView();
-	void run();
+	virtual void Run() override;
 private:
 	std::unique_ptr<CommandManager> m_cmdManager;
 };

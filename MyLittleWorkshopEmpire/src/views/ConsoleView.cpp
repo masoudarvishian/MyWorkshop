@@ -12,7 +12,7 @@ ConsoleView::~ConsoleView()
 	std::cout << "ConsoleView is destroyed!\n";
 }
 
-void ConsoleView::run()
+void ConsoleView::Run()
 {
 	auto gameIsRunning{ true };
 	std::string command;
