@@ -37,6 +37,7 @@ void WindowView::Run()
 
     /* init ImGui */
     ImGui::CreateContext();
+    ImGuiIO& io = ImGui::GetIO(); (void)io;
     ImGui_ImplGlfwGL3_Init(window, true);
 
     // Setup style
