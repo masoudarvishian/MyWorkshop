@@ -1,12 +1,18 @@
 #ifndef VIEW_BASE_H
 #define VIEW_BASE_H
 
-class ViewBase
+namespace UbiWorkshop
 {
-public:
-	virtual ~ViewBase() {}
-	virtual void Run() = 0;
-};
+	namespace Views
+	{
+		class ViewBase
+		{
+		public:
+			virtual ~ViewBase() {}
+			virtual void Run() = 0;
+		};
+	}
+}
 
 #endif // !VIEW_BASE_H
 

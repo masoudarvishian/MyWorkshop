@@ -5,10 +5,21 @@
 #include "../Command.h"
 #include "../../../viewmodels/HelpViewModel.h"
 
-class HelpCommand : public Command
+namespace UbiWorkshop
 {
-public:
-	virtual void execute(std::function<void()> callback) override;
-};
+	namespace Views
+	{
+		namespace ConsoleCommands
+		{
+			using namespace UbiWorkshop::ViewModels;
+
+			class HelpCommand : public Command
+			{
+			public:
+				virtual void execute(std::function<void()> callback) override;
+			};
+		}
+	}
+}
 
 #endif

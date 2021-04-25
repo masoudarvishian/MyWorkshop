@@ -1,7 +1,9 @@
-#include "Storage.h"
+#include "models/Storage.h"
 #include "views/ViewBase.h"
 #include "views/ConsoleView.h"
 #include "views/WindowView.h"
+
+using namespace UbiWorkshop::Views;
 
 int main()
 {

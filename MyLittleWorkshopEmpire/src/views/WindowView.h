@@ -21,27 +21,35 @@
 #include "cmd/window-cmd/WBuyToolCommand.h"
 #include "cmd/window-cmd/WAcceptJobCommand.h"
 
-class WindowView : public ViewBase
+namespace UbiWorkshop
 {
-public:
-	WindowView();
-	~WindowView();
-	virtual void Run() override;
-private:
-	void ErrorPopup(const std::string& errMsg) noexcept;
-	void DisplayInventory(const ImGuiWindowFlags& window_flags) const noexcept;
-	void DisplayStore(const ImGuiWindowFlags& window_flags, const std::vector<std::shared_ptr<Tool>>& shopTools) noexcept;
-	void DisplayJobs(const ImGuiWindowFlags& window_flags, std::vector<JobViewModel>& jobs) noexcept;
+	namespace Views
+	{
+		using namespace UbiWorkshop::Views::WindowCommands;
 
-	std::unique_ptr<ShopViewModel> m_shopViewModel;
-	std::shared_ptr<PlayerViewModel> m_playerViewModel;
-	std::shared_ptr<AcceptJobViewModel> m_acceptJobViewModel;
-	std::shared_ptr<DisplayJobsViewModel> m_displayJobsViewModel;
-	std::shared_ptr<InventoryViewModel> m_inventoryViewModel;
+		class WindowView : public ViewBase
+		{
+		public:
+			WindowView();
+			~WindowView();
+			virtual void Run() override;
+		private:
+			void ErrorPopup(const std::string& errMsg) noexcept;
+			void DisplayInventory(const ImGuiWindowFlags& window_flags) const noexcept;
+			void DisplayStore(const ImGuiWindowFlags& window_flags, const std::vector<std::shared_ptr<Tool>>& shopTools) noexcept;
+			void DisplayJobs(const ImGuiWindowFlags& window_flags, std::vector<JobViewModel>& jobs) noexcept;
 
-	bool m_displayErrorPopup{ false };
-	std::string m_errorMsg;
-	std::unique_ptr<CommandManager> m_cmdManager;
-};
+			std::unique_ptr<ShopViewModel> m_shopViewModel;
+			std::shared_ptr<PlayerViewModel> m_playerViewModel;
+			std::shared_ptr<AcceptJobViewModel> m_acceptJobViewModel;
+			std::shared_ptr<DisplayJobsViewModel> m_displayJobsViewModel;
+			std::shared_ptr<InventoryViewModel> m_inventoryViewModel;
+
+			bool m_displayErrorPopup{ false };
+			std::string m_errorMsg;
+			std::unique_ptr<CommandManager> m_cmdManager;
+		};
+	}
+}
 
 #endif // !WINDOW_VIEW_H

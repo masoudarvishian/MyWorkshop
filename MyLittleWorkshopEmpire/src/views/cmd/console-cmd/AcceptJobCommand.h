@@ -5,15 +5,26 @@
 #include "../Command.h"
 #include "../../../viewmodels/AcceptJobViewModel.h"
 
-class AcceptJobCommand : public Command
+namespace UbiWorkshop
 {
-public:
-	AcceptJobCommand(int jobId);
-	virtual void execute(std::function<void()> callback) override;
+	namespace Views
+	{
+		namespace ConsoleCommands
+		{
+			using namespace UbiWorkshop::ViewModels;
 
-private:
-	int m_jobId;
-};
+			class AcceptJobCommand : public Command
+			{
+			public:
+				AcceptJobCommand(int jobId);
+				virtual void execute(std::function<void()> callback) override;
+
+			private:
+				int m_jobId;
+			};
+		}
+	}
+}
 
 #endif // !ACCEPT_JOB_COMMAND_H
 

@@ -6,38 +6,44 @@
 #include <iostream>
 #include <algorithm>
 #include "Job.h"
-#include "../Storage.h"
+#include "Storage.h"
 
-class JobManager
+namespace UbiWorkshop
 {
-public:
-	// it's singleton, and cannot have copy constructor and operator=
-	JobManager(JobManager& other) = delete;
-	void operator=(const JobManager&) = delete;
+	namespace Models
+	{
 
-	// default constructor
-	JobManager() {}
+		class JobManager
+		{
+		public:
+			// it's singleton, and cannot have copy constructor and operator=
+			JobManager(JobManager& other) = delete;
+			void operator=(const JobManager&) = delete;
 
-	// destructor
-	~JobManager();
+			// default constructor
+			JobManager() {}
 
-	// singleton pattern
-	static JobManager* GetInstance() noexcept;
+			// destructor
+			~JobManager();
 
-	void AddJob(std::shared_ptr<Job> job) noexcept;
-	void RemoveJob(int jobId) noexcept;
-	const std::vector<std::shared_ptr<Job>> GetJobs() const noexcept;
-	bool AcceptJob(int jobId) noexcept;
+			// singleton pattern
+			static JobManager* GetInstance() noexcept;
 
-private:
+			void AddJob(std::shared_ptr<Job> job) noexcept;
+			void RemoveJob(int jobId) noexcept;
+			const std::vector<std::shared_ptr<Job>> GetJobs() const noexcept;
+			bool AcceptJob(int jobId) noexcept;
 
-	Job* FindJob(int jobId) const noexcept;
+		private:
 
-	std::vector<std::shared_ptr<Job>> m_jobs;
+			Job* FindJob(int jobId) const noexcept;
 
-	// singleton
-	static std::shared_ptr<JobManager> _instance;
-};
+			std::vector<std::shared_ptr<Job>> m_jobs;
 
+			// singleton
+			static std::shared_ptr<JobManager> _instance;
+		};
+	}
+}
 #endif // !JOB_MANAGER_H
 

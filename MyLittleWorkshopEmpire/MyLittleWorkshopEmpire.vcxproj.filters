@@ -57,7 +57,7 @@
     <ClCompile Include="src\models\HelpModel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Storage.cpp">
+    <ClCompile Include="src\models\Storage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\viewmodels\PlayerViewModel.cpp">
@@ -131,9 +131,6 @@
     <ClInclude Include="src\views\cmd\Command.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\views\cmd\console-cmd\TestCommand.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\views\cmd\console-cmd\HelpCommand.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -155,7 +152,7 @@
     <ClInclude Include="src\models\HelpModel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Storage.h">
+    <ClInclude Include="src\models\Storage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\viewmodels\PlayerViewModel.h">

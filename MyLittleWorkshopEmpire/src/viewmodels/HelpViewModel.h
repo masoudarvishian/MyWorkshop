@@ -5,11 +5,19 @@
 #include <memory>
 #include "../models/HelpModel.h"
 
-class HelpViewModel
+namespace UbiWorkshop
 {
-public:
-	std::string getHelp() const noexcept;
-};
+	namespace ViewModels
+	{
+		using namespace UbiWorkshop::Models;
+
+		class HelpViewModel
+		{
+		public:
+			std::string getHelp() const noexcept;
+		};
+	}
+}
 
 #endif
 

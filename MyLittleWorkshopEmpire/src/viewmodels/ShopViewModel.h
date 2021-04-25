@@ -6,10 +6,19 @@
 #include "../models/Tool.h"
 #include "../models/ToolManager.h"
 
-class ShopViewModel
+namespace UbiWorkshop
 {
-public:
-	const std::vector<std::shared_ptr<Tool>> getTools() const noexcept;
-};
+	namespace ViewModels
+	{
+		using namespace UbiWorkshop::Models;
+
+		class ShopViewModel
+		{
+		public:
+			const std::vector<std::shared_ptr<Tool>> getTools() const noexcept;
+		};
+	}
+}
+
 #endif // !SHOP_VIEWMODEL_H
 

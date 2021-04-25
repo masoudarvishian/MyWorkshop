@@ -2,16 +2,24 @@
 #define PLAYER_VIEWMODEL_H
 
 #include <sstream>
-#include "../Storage.h"
+#include "../models/Storage.h"
 
-class PlayerViewModel
+namespace UbiWorkshop
 {
-public:
-	const bool buyTool(int toolIndex) noexcept;
-	const std::string GetBuyStatusMsg() const noexcept;
-private:
-	std::string m_buyMessage;
-};
+	namespace ViewModels
+	{
+		using namespace UbiWorkshop::Models;
+
+		class PlayerViewModel
+		{
+		public:
+			const bool buyTool(int toolIndex) noexcept;
+			const std::string GetBuyStatusMsg() const noexcept;
+		private:
+			std::string m_buyMessage;
+		};
+	}
+}
 
 #endif // !PLAYER_VIEWMODEL_H
 

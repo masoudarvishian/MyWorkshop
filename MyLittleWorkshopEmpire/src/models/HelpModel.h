@@ -3,16 +3,22 @@
 
 #include <string>
 
-class HelpModel
+namespace UbiWorkshop
 {
-public:
-	HelpModel() noexcept;
+	namespace Models
+	{
+		class HelpModel
+		{
+		public:
+			HelpModel() noexcept;
 
-	std::string getHelp() const noexcept;
+			std::string getHelp() const noexcept;
 
-private:
-	std::string m_helpStr;
-};
+		private:
+			std::string m_helpStr;
+		};
+	}
+}
 
 #endif // !HELP_MODEL_H
 

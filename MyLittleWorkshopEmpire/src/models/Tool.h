@@ -4,26 +4,32 @@
 #include <string>
 #include <iostream>
 
-constexpr int MAX_WEAR_COUNT = 5;
-class ToolManager;
-
-class Tool
+namespace UbiWorkshop
 {
-public:
+	namespace Models
+	{
+		constexpr int MAX_WEAR_COUNT = 5;
+		class ToolManager;
 
-	Tool(const char* name, const int price) noexcept;
+		class Tool
+		{
+		public:
 
-	~Tool();
+			Tool(const char* name, const int price) noexcept;
 
-	const int GetId() const noexcept;
-	const std::string GetName() const noexcept;
-	const int GetPrice() const noexcept;
-	const int GetMaxWearCount() const noexcept;
+			~Tool();
 
-private:
-	std::string m_name;
-	int m_price;
-	int m_id;
-};
+			const int GetId() const noexcept;
+			const std::string GetName() const noexcept;
+			const int GetPrice() const noexcept;
+			const int GetMaxWearCount() const noexcept;
+
+		private:
+			std::string m_name;
+			int m_price;
+			int m_id;
+		};
+	}
+}
 
 #endif 

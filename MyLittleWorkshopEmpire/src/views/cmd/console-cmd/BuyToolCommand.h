@@ -4,14 +4,25 @@
 #include "../Command.h"
 #include "../../../viewmodels/PlayerViewModel.h"
 
-class BuyToolCommand : public Command
+namespace UbiWorkshop
 {
-public:
-	BuyToolCommand(int toolId);
-	virtual void execute(std::function<void()> callback) override;
+	namespace Views
+	{
+		namespace ConsoleCommands
+		{
+			using namespace UbiWorkshop::ViewModels;
 
-private:
-	int m_toolId;
-};
+			class BuyToolCommand : public Command
+			{
+			public:
+				BuyToolCommand(int toolId);
+				virtual void execute(std::function<void()> callback) override;
+
+			private:
+				int m_toolId;
+			};
+		}
+	}
+}
 
 #endif

@@ -6,28 +6,34 @@
 #include <iostream>
 #include "Tool.h"
 
-constexpr int START_MONEY = 200;
-
-class Player
+namespace UbiWorkshop
 {
-public:
+	namespace Models
+	{
+		constexpr int START_MONEY = 200;
 
-	Player();
-	~Player();
+		class Player
+		{
+		public:
 
-	bool BuyTool(Tool* tool) noexcept;
-	void DamageTool(Tool* tool) noexcept;
-	void InitTool(Tool* tool) noexcept;
+			Player();
+			~Player();
 
-	const int getMoney() const noexcept;
-	void AddMoney(int amout) noexcept;
+			bool BuyTool(Tool* tool) noexcept;
+			void DamageTool(Tool* tool) noexcept;
+			void InitTool(Tool* tool) noexcept;
 
-	std::map<Tool*, int> getUsableTools() const noexcept;
+			const int getMoney() const noexcept;
+			void AddMoney(int amout) noexcept;
 
-private:
-	int m_money;
-	std::map<Tool*, int> m_usableTools; // <Tool,UsageCount>
-	int m_id;
-};
+			std::map<Tool*, int> getUsableTools() const noexcept;
+
+		private:
+			int m_money;
+			std::map<Tool*, int> m_usableTools; // <Tool,UsageCount>
+			int m_id;
+		};
+	}
+}
 
 #endif

@@ -5,38 +5,43 @@
 #include <vector>
 #include <string>
 
-class ToolManager
+namespace UbiWorkshop
 {
-public:
+	namespace Models
+	{
+		class ToolManager
+		{
+		public:
 
-	// it's singleton, and cannot have copy constructor and operator=
-	ToolManager(ToolManager& other) = delete;
-	void operator=(const ToolManager&) = delete;
+			// it's singleton, and cannot have copy constructor and operator=
+			ToolManager(ToolManager& other) = delete;
+			void operator=(const ToolManager&) = delete;
 
-	// default constructor
-	ToolManager() {}
+			// default constructor
+			ToolManager() {}
 
-	// destructor
-	~ToolManager();
+			// destructor
+			~ToolManager();
 
-	// singleton pattern
-	static ToolManager* GetInstance() noexcept;
+			// singleton pattern
+			static ToolManager* GetInstance() noexcept;
 
-	void AddTool(std::shared_ptr<Tool> tool);
+			void AddTool(std::shared_ptr<Tool> tool);
 
-	Tool* FindToolByName(std::string name) const;
+			Tool* FindToolByName(std::string name) const;
 
-	Tool* GetToolById(int toolIndex);
+			Tool* GetToolById(int toolIndex);
 
-	const std::vector<std::shared_ptr<Tool>> getTools() const noexcept;
+			const std::vector<std::shared_ptr<Tool>> getTools() const noexcept;
 
-private:
-	std::vector<std::shared_ptr<Tool>> m_tools;
+		private:
+			std::vector<std::shared_ptr<Tool>> m_tools;
 
-	// singleton
-	static std::shared_ptr<ToolManager> _instance;
-};
-
+			// singleton
+			static std::shared_ptr<ToolManager> _instance;
+		};
+	}
+}
 
 #endif 
 

@@ -4,10 +4,21 @@
 #include "../Command.h"
 #include "../../../viewmodels/ShopViewModel.h"
 
-class ShopCommand : public Command
+namespace UbiWorkshop
 {
-public:
-	virtual void execute(std::function<void()> callback) override;
-};
+	namespace Views
+	{
+		namespace ConsoleCommands
+		{
+			using namespace UbiWorkshop::ViewModels;
+
+			class ShopCommand : public Command
+			{
+			public:
+				virtual void execute(std::function<void()> callback) override;
+			};
+		}
+	}
+}
 #endif
 

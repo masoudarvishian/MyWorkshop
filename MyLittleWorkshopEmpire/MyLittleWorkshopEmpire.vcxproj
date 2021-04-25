@@ -172,7 +172,7 @@
     <ClCompile Include="src\models\HelpModel.cpp" />
     <ClCompile Include="src\Application.cpp" />
     <ClCompile Include="src\models\Player.cpp" />
-    <ClCompile Include="src\Storage.cpp" />
+    <ClCompile Include="src\models\Storage.cpp" />
     <ClCompile Include="src\models\Tool.cpp" />
     <ClCompile Include="src\models\ToolManager.cpp" />
     <ClCompile Include="src\models\Vehicle.cpp" />
@@ -208,8 +208,7 @@
     <ClInclude Include="src\models\Malfunction.h" />
     <ClInclude Include="src\models\HelpModel.h" />
     <ClInclude Include="src\models\Player.h" />
-    <ClInclude Include="src\views\cmd\console-cmd\TestCommand.h" />
-    <ClInclude Include="src\Storage.h" />
+    <ClInclude Include="src\models\Storage.h" />
     <ClInclude Include="src\models\Tool.h" />
     <ClInclude Include="src\models\ToolManager.h" />
     <ClInclude Include="src\models\Vehicle.h" />

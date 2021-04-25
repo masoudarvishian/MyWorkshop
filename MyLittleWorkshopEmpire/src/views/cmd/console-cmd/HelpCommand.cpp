@@ -1,10 +1,19 @@
 #include "HelpCommand.h"
 
-void HelpCommand::execute(std::function<void()> callback)
+namespace UbiWorkshop
 {
-	auto helpViewModel = std::make_unique<HelpViewModel>();
+	namespace Views
+	{
+		namespace ConsoleCommands
+		{
+			void HelpCommand::execute(std::function<void()> callback)
+			{
+				auto helpViewModel = std::make_unique<HelpViewModel>();
 
-	std::cout << helpViewModel->getHelp();
+				std::cout << helpViewModel->getHelp();
 
-	callback();
+				callback();
+			}
+		}
+	}
 }

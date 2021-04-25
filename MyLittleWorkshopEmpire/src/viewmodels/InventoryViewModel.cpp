@@ -1,28 +1,34 @@
 #include "InventoryViewModel.h"
 
-void InventoryViewModel::UpdateInventory() noexcept
+namespace UbiWorkshop
 {
-	auto player = Storage::GetInstance()->getPlayer();
-
-	m_money = player->getMoney();
-
-	auto usableTools = player->getUsableTools();
-
-	for (auto iter(usableTools.begin()); iter != usableTools.end(); iter++)
+	namespace ViewModels
 	{
-		auto tool{ iter->first };
-		auto usageCounter{ iter->second };
+		void InventoryViewModel::UpdateInventory() noexcept
+		{
+			auto player = Storage::GetInstance()->getPlayer();
 
-		m_tools[tool->GetName()] = usageCounter;
+			m_money = player->getMoney();
+
+			auto usableTools = player->getUsableTools();
+
+			for (auto iter(usableTools.begin()); iter != usableTools.end(); iter++)
+			{
+				auto tool{ iter->first };
+				auto usageCounter{ iter->second };
+
+				m_tools[tool->GetName()] = usageCounter;
+			}
+		}
+
+		const int InventoryViewModel::GetMoney() const noexcept
+		{
+			return m_money;
+		}
+
+		const std::map<std::string, int> InventoryViewModel::GetTools() const noexcept
+		{
+			return m_tools;
+		}
 	}
-}
-
-const int InventoryViewModel::GetMoney() const noexcept
-{
-	return m_money;
-}
-
-const std::map<std::string, int> InventoryViewModel::GetTools() const noexcept
-{
-	return m_tools;
 }

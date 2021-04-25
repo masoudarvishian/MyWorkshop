@@ -5,11 +5,22 @@
 #include "../Command.h"
 #include "../../../viewmodels/DisplayJobsViewModel.h"
 
-class DisplayJobsCommand : public Command
+namespace UbiWorkshop
 {
-public:
-	virtual void execute(std::function<void()> callback) override;
-};
+	namespace Views
+	{
+		namespace ConsoleCommands
+		{
+			using namespace UbiWorkshop::ViewModels;
+
+			class DisplayJobsCommand : public Command
+			{
+			public:
+				virtual void execute(std::function<void()> callback) override;
+			};
+		}
+	}
+}
 
 #endif // !DISPLAY_JOBS_COMMAND_H
 
