@@ -7,9 +7,8 @@ namespace UbiWorkshop
 		WindowView::WindowView()
 		{
 			m_cmdManager = std::make_unique<CommandManager>();
-
+			
 			m_shopViewModel = std::make_unique<ShopViewModel>();
-			m_playerViewModel = std::make_shared<PlayerViewModel>();
 			m_acceptJobViewModel = std::make_shared<AcceptJobViewModel>();
 			m_displayJobsViewModel = std::make_shared<DisplayJobsViewModel>();
 			m_inventoryViewModel = std::make_shared<InventoryViewModel>();
@@ -167,7 +166,7 @@ namespace UbiWorkshop
 				if (ImGui::Button(label.c_str()))
 				{
 					// add a command to buy the tool
-					auto command = std::make_shared<WBuyToolCommand>(shopTools[i]->GetId(), m_playerViewModel.get(), m_inventoryViewModel.get(),
+					auto command = std::make_shared<WBuyToolCommand>(shopTools[i]->GetId(), m_inventoryViewModel.get(),
 						&m_errorMsg, &m_displayErrorPopup);
 
 					m_cmdManager->add(command);

@@ -17,13 +17,12 @@ namespace UbiWorkshop
 			{
 			public:
 				//constructor
-				WBuyToolCommand(int toolId, PlayerViewModel* playerViewModel, InventoryViewModel* inventoryViewModel,
+				WBuyToolCommand(int toolId, InventoryViewModel* inventoryViewModel,
 					std::string* errorMsg, bool* displayErrPopup);
 
 				virtual void execute(std::function<void()> callback) override;
 			private:
 				int m_toolId;
-				PlayerViewModel* m_playerViewModel;
 				InventoryViewModel* m_inventoryViewModel;
 				std::string* m_errorMsg;
 				bool* m_displayErrPopup;
