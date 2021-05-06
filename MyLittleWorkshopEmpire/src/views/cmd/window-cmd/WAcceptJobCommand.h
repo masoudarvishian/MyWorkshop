@@ -18,13 +18,12 @@ namespace UbiWorkshop
 			{
 			public:
 				// constructor
-				WAcceptJobCommand(int jobId, AcceptJobViewModel* acceptJobViewModel, InventoryViewModel* inventoryViewModel,
+				WAcceptJobCommand(int jobId, InventoryViewModel* inventoryViewModel,
 					DisplayJobsViewModel* displayJobsViewModel, std::vector<JobViewModel>& jobs, std::string* errorMsg, bool* displayErrPopup);
 
 				virtual void execute(std::function<void()> callback) override;
 			private:
 				int m_jobId;
-				AcceptJobViewModel* m_acceptJobViewModel;
 				InventoryViewModel* m_inventoryViewModel;
 				DisplayJobsViewModel* m_displayJobsViewModel;
 				std::vector<JobViewModel>& m_jobs;

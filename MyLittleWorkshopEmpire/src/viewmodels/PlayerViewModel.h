@@ -13,6 +13,8 @@ namespace UbiWorkshop
 		class PlayerViewModel
 		{
 		public:
+			PlayerViewModel() { printf("PlayerViewModel is created!\n"); }
+			~PlayerViewModel() { printf("PlayerViewModel is destroyed!\n"); }
 			const bool buyTool(int toolIndex) noexcept;
 			const std::string GetBuyStatusMsg() const noexcept;
 		private:

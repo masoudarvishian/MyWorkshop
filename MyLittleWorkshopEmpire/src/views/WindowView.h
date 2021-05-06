@@ -40,7 +40,6 @@ namespace UbiWorkshop
 			void DisplayJobs(const ImGuiWindowFlags& window_flags, std::vector<JobViewModel>& jobs) noexcept;
 
 			std::unique_ptr<ShopViewModel> m_shopViewModel;
-			std::shared_ptr<AcceptJobViewModel> m_acceptJobViewModel;
 			std::shared_ptr<DisplayJobsViewModel> m_displayJobsViewModel;
 			std::shared_ptr<InventoryViewModel> m_inventoryViewModel;
 
