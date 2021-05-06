@@ -39,7 +39,6 @@ namespace UbiWorkshop
 			void DisplayStore(const ImGuiWindowFlags& window_flags, const std::vector<std::shared_ptr<Tool>>& shopTools) noexcept;
 			void DisplayJobs(const ImGuiWindowFlags& window_flags, std::vector<JobViewModel>& jobs) noexcept;
 
-			std::unique_ptr<ShopViewModel> m_shopViewModel;
 			std::shared_ptr<InventoryViewModel> m_inventoryViewModel;
 
 			bool m_displayErrorPopup{ false };

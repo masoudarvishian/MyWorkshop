@@ -8,7 +8,6 @@ namespace UbiWorkshop
 		{
 			m_cmdManager = std::make_unique<CommandManager>();
 			
-			m_shopViewModel = std::make_unique<ShopViewModel>();
 			m_inventoryViewModel = std::make_shared<InventoryViewModel>();
 		}
 
@@ -60,14 +59,21 @@ namespace UbiWorkshop
 			bool show_demo_window = true;
 			ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
+			/// first init of displaying values ///
 			m_inventoryViewModel->UpdateInventory();
-			auto shopTools = m_shopViewModel->getTools();
+
+			std::vector<std::shared_ptr<Tool>> shopTools;
+			{ // get shop tools
+				auto m_shopViewModel = std::make_unique<ShopViewModel>();
+				shopTools = m_shopViewModel->getTools();
+			} // destroy viewmodel
 
 			std::vector<JobViewModel> jobs;
-			{
+			{ // get jobs
 				auto displayJobsViewModel = std::make_unique<DisplayJobsViewModel>();
 				jobs = displayJobsViewModel->GetJobs();
-			}
+			} // destroy viewmodel
+			//======================================
 
 			ImGuiWindowFlags window_flags = 0;
 			window_flags |= ImGuiWindowFlags_NoMove;
