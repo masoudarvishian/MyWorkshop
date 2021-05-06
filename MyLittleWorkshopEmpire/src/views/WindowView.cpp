@@ -211,8 +211,15 @@ namespace UbiWorkshop
 				if (ImGui::Button(label.c_str()))
 				{
 					// add a command to complete the job
-					auto command = std::make_shared<WAcceptJobCommand>(jobs[i].id, m_inventoryViewModel.get(),
-						jobs, &m_errorMsg, &m_displayErrorPopup);
+					auto command = std::make_shared<WAcceptJobCommand>(jobs[i].id,
+						jobs, &m_errorMsg, &m_displayErrorPopup,
+						[&]() { // on success
+							auto displayJobsViewModel = std::make_unique<DisplayJobsViewModel>();
+
+							m_inventoryViewModel->UpdateInventory();
+							jobs = displayJobsViewModel->GetJobs();
+						}
+					);
 
 					m_cmdManager->add(command);
 

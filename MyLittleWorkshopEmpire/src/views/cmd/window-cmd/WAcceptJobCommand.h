@@ -1,6 +1,7 @@
 #ifndef W_ACCEPT_JOB_COMMAND_H
 #define W_ACCEPT_JOB_COMMAND_H
 
+#include <functional>
 #include "../Command.h"
 #include "../../../viewmodels/AcceptJobViewModel.h"
 #include "../../../viewmodels/InventoryViewModel.h"
@@ -18,16 +19,16 @@ namespace UbiWorkshop
 			{
 			public:
 				// constructor
-				WAcceptJobCommand(int jobId, InventoryViewModel* inventoryViewModel,
-					std::vector<JobViewModel>& jobs, std::string* errorMsg, bool* displayErrPopup);
+				WAcceptJobCommand(int jobId, std::vector<JobViewModel>& jobs, std::string* errorMsg, 
+					bool* displayErrPopup, std::function<void()> onSuccess);
 
 				virtual void execute(std::function<void()> callback) override;
 			private:
 				int m_jobId;
-				InventoryViewModel* m_inventoryViewModel;
 				std::vector<JobViewModel>& m_jobs;
 				std::string* m_errorMsg;
 				bool* m_displayErrPopup;
+				std::function<void()> m_onSuccess;
 			};
 		}
 	}
