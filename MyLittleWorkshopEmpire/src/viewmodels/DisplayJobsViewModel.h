@@ -26,6 +26,8 @@ namespace UbiWorkshop
 		class DisplayJobsViewModel
 		{
 		public:
+			DisplayJobsViewModel() { printf("DisplayJobsViewModel is created!\n"); }
+			~DisplayJobsViewModel() { printf("DisplayJobsViewModel is destroyed!\n"); }
 			const std::vector<JobViewModel> GetJobs() const noexcept;
 		};
 	}

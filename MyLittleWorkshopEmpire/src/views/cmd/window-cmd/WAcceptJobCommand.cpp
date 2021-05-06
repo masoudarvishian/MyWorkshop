@@ -7,10 +7,10 @@ namespace UbiWorkshop
 		namespace WindowCommands
 		{
 			WAcceptJobCommand::WAcceptJobCommand(int jobId, InventoryViewModel* inventoryViewModel,
-				DisplayJobsViewModel* displayJobsViewModel, std::vector<JobViewModel>& jobs, std::string* errorMsg, bool* displayErrPopup)
+				std::vector<JobViewModel>& jobs, std::string* errorMsg, bool* displayErrPopup)
 
 				: m_jobId{ jobId }, m_inventoryViewModel{ inventoryViewModel },
-				m_displayJobsViewModel{ displayJobsViewModel }, m_jobs{ jobs }, m_errorMsg{ errorMsg }, m_displayErrPopup{ displayErrPopup }
+				m_jobs{ jobs }, m_errorMsg{ errorMsg }, m_displayErrPopup{ displayErrPopup }
 			{
 			}
 
@@ -20,8 +20,10 @@ namespace UbiWorkshop
 
 				if (acceptJobViewModel->AcceptJob(m_jobId))
 				{
+					auto displayJobsViewModel = std::make_unique<DisplayJobsViewModel>();
+
 					m_inventoryViewModel->UpdateInventory();
-					m_jobs = m_displayJobsViewModel->GetJobs();
+					m_jobs = displayJobsViewModel->GetJobs();
 				}
 				else
 				{

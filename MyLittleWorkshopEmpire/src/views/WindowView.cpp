@@ -9,7 +9,6 @@ namespace UbiWorkshop
 			m_cmdManager = std::make_unique<CommandManager>();
 			
 			m_shopViewModel = std::make_unique<ShopViewModel>();
-			m_displayJobsViewModel = std::make_shared<DisplayJobsViewModel>();
 			m_inventoryViewModel = std::make_shared<InventoryViewModel>();
 		}
 
@@ -63,7 +62,12 @@ namespace UbiWorkshop
 
 			m_inventoryViewModel->UpdateInventory();
 			auto shopTools = m_shopViewModel->getTools();
-			auto jobs = m_displayJobsViewModel->GetJobs();
+
+			std::vector<JobViewModel> jobs;
+			{
+				auto displayJobsViewModel = std::make_unique<DisplayJobsViewModel>();
+				jobs = displayJobsViewModel->GetJobs();
+			}
 
 			ImGuiWindowFlags window_flags = 0;
 			window_flags |= ImGuiWindowFlags_NoMove;
@@ -199,7 +203,7 @@ namespace UbiWorkshop
 				if (ImGui::Button(label.c_str()))
 				{
 					// add a command to complete the job
-					auto command = std::make_shared<WAcceptJobCommand>(jobs[i].id, m_inventoryViewModel.get(), m_displayJobsViewModel.get(),
+					auto command = std::make_shared<WAcceptJobCommand>(jobs[i].id, m_inventoryViewModel.get(),
 						jobs, &m_errorMsg, &m_displayErrorPopup);
 
 					m_cmdManager->add(command);
