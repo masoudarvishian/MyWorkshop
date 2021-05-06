@@ -7,8 +7,7 @@ namespace UbiWorkshop
 		WindowView::WindowView()
 		{
 			m_cmdManager = std::make_unique<CommandManager>();
-			
-			m_inventoryViewModel = std::make_shared<InventoryViewModel>();
+			m_inventoryViewModel = std::make_unique<InventoryViewModel>();
 		}
 
 		WindowView::~WindowView()
@@ -175,8 +174,11 @@ namespace UbiWorkshop
 				if (ImGui::Button(label.c_str()))
 				{
 					// add a command to buy the tool
-					auto command = std::make_shared<WBuyToolCommand>(shopTools[i]->GetId(), m_inventoryViewModel.get(),
-						&m_errorMsg, &m_displayErrorPopup);
+					auto command = std::make_shared<WBuyToolCommand>(shopTools[i]->GetId(),
+						[&]() { // on success
+							m_inventoryViewModel->UpdateInventory();
+						}
+					);
 
 					m_cmdManager->add(command);
 				}

@@ -14,6 +14,9 @@ namespace UbiWorkshop
 		class InventoryViewModel
 		{
 		public:
+			InventoryViewModel() { printf("InventoryViewModel is created\n"); }
+			~InventoryViewModel() { printf("InventoryViewModel is destroyed\n"); }
+
 			void UpdateInventory() noexcept;
 			const int GetMoney() const noexcept;
 			const std::map<std::string, int> GetTools() const noexcept;

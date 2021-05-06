@@ -1,6 +1,7 @@
 #ifndef W_BUY_TOOL_COMMAND_H
 #define W_BUY_TOOL_COMMAND_H
 
+#include <functional>;
 #include "../Command.h"
 #include "../../../viewmodels/PlayerViewModel.h"
 #include "../../../viewmodels/InventoryViewModel.h"
@@ -17,15 +18,14 @@ namespace UbiWorkshop
 			{
 			public:
 				//constructor
-				WBuyToolCommand(int toolId, InventoryViewModel* inventoryViewModel,
-					std::string* errorMsg, bool* displayErrPopup);
+				WBuyToolCommand(int toolId, std::function<void()> onSuccess);
 
 				virtual void execute(std::function<void()> callback) override;
 			private:
 				int m_toolId;
-				InventoryViewModel* m_inventoryViewModel;
 				std::string* m_errorMsg;
 				bool* m_displayErrPopup;
+				std::function<void()> m_onSuccess;
 			};
 		}
 	}

@@ -6,10 +6,8 @@ namespace UbiWorkshop
 	{
 		namespace WindowCommands
 		{
-			WBuyToolCommand::WBuyToolCommand(int toolId, InventoryViewModel* inventoryViewModel,
-				std::string* errorMsg, bool* displayErrPopup)
-				: m_toolId{ toolId }, m_inventoryViewModel{ inventoryViewModel },
-				m_errorMsg{ errorMsg }, m_displayErrPopup{ displayErrPopup }
+			WBuyToolCommand::WBuyToolCommand(int toolId, std::function<void()> onSuccess)
+				: m_toolId{ toolId }, m_onSuccess{onSuccess}
 			{}
 
 			void WBuyToolCommand::execute(std::function<void()> callback)
@@ -18,7 +16,7 @@ namespace UbiWorkshop
 
 				if (playerViewModel->buyTool(m_toolId))
 				{
-					m_inventoryViewModel->UpdateInventory();
+					m_onSuccess();
 				}
 				else
 				{
