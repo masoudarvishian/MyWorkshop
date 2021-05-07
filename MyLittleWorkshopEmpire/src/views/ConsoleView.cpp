@@ -70,7 +70,8 @@ namespace UbiWorkshop
 					}
 
 					// a command for accepting a job
-					m_cmdManager->add(std::make_unique<AcceptJobCommand>(id));
+					auto cmd = std::make_unique<AcceptJobCommand>(id);
+					m_cmdManager->add(std::move(cmd));
 				}
 				break;
 				case 's':   // shop
