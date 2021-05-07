@@ -13,7 +13,7 @@ namespace UbiWorkshop
 
 		void Storage::init()
 		{
-			m_player = std::make_shared<Player>();
+			m_player = std::make_unique<Player>();
 
 			// init tools
 

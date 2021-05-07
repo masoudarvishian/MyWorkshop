@@ -32,7 +32,7 @@ namespace UbiWorkshop
 			const std::list<Vehicle*> GetVehicles() const noexcept;
 
 		private:
-			std::shared_ptr<Player> m_player;
+			std::unique_ptr<Player> m_player;
 			std::list<std::unique_ptr<Vehicle>> m_vehicles;
 
 			// singleton
