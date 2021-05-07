@@ -19,11 +19,6 @@ namespace UbiWorkshop
 
 				if (acceptJobViewModel->AcceptJob(m_jobId))
 				{
-					/*auto displayJobsViewModel = std::make_unique<DisplayJobsViewModel>();
-
-					m_inventoryViewModel->UpdateInventory();
-					m_jobs = displayJobsViewModel->GetJobs();*/
-
 					m_onSuccess();
 				}
 				else
