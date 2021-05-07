@@ -16,10 +16,8 @@ namespace UbiWorkshop
             std::cout << "Vehicle #" << m_id << " is destroyed!\n";
         }
 
-        void Vehicle::AddMalfunction(std::shared_ptr<Malfunction> value) noexcept
+        void Vehicle::AddMalfunction(std::unique_ptr<Malfunction> value) noexcept
         {
-            m_malfunctions.push_back(value);
-
             ///// ADD A JOB /////
             // here we can fire an event, but because of time-limit/simplicity, I call the function directly
             std::map<int, std::string> toolsIdName;
@@ -30,13 +28,16 @@ namespace UbiWorkshop
             }
             auto job = std::make_unique<Job>(m_id, value->GetId(), m_type, value->GetName(), value->GetRewardAmount(), toolsIdName);
             JobManager::GetInstance()->AddJob(std::move(job));
+
+            m_malfunctions.push_back(std::move(value));
         }
 
         void Vehicle::RemoveMalfunction(int malfunctionId) noexcept
         {
-            auto search = std::find_if(m_malfunctions.begin(), m_malfunctions.end(), [&malfunctionId](std::shared_ptr<Malfunction>& m) {
+            auto search = std::find_if(m_malfunctions.begin(), m_malfunctions.end(), [&malfunctionId](std::unique_ptr<Malfunction>& m) 
+            {
                 return malfunctionId == m.get()->GetId();
-                });
+            });
 
             if (search != m_malfunctions.end())
             {
@@ -54,6 +55,15 @@ namespace UbiWorkshop
 
         const std::string Vehicle::GetType() const noexcept { return m_type; }
 
-        const std::list<std::shared_ptr<Malfunction>> Vehicle::GetListOfMalfunction() const noexcept { return m_malfunctions; }
+        const std::list<Malfunction*> Vehicle::GetListOfMalfunction() const noexcept {
+
+            std::list<Malfunction*> malfunctions;
+
+            for (auto& m : m_malfunctions) {
+                malfunctions.push_back(m.get());
+            }
+
+            return malfunctions;
+        }
     }
 }
