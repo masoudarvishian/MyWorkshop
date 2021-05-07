@@ -15,6 +15,8 @@ namespace UbiWorkshop
 			if (_instance == nullptr)
 			{
 				_instance = std::make_shared<JobManager>();
+
+				std::cout << "JobManager is created!\n";
 			}
 			return _instance.get();
 		}
@@ -90,17 +92,19 @@ namespace UbiWorkshop
 			player->AddMoney(job->GetRewardAmount());
 			// remove the malfuction from vehicle
 			Vehicle* vehicle{ nullptr };
-			auto vehicles = Storage::GetInstance()->getVehicles();
-			auto searchVehicle = std::find_if(vehicles.begin(), vehicles.end(), [&job](std::shared_ptr<Vehicle> v) {
+			auto vehicles = Storage::GetInstance()->GetVehicles();
+			auto searchVehicle = std::find_if(vehicles.begin(), vehicles.end(), [&job](Vehicle* v) 
+			{
 				return v->GetId() == job->GetVehicleId();
-				});
+			});
+
 			if (searchVehicle != vehicles.end())
 			{
 				auto index = std::distance(vehicles.begin(), searchVehicle);
 				auto iter = vehicles.begin();
 				std::advance(iter, index);
 
-				vehicle = (*iter).get();
+				vehicle = *iter;
 
 				vehicle->RemoveMalfunction(job->GetMalfunctionId());
 			}

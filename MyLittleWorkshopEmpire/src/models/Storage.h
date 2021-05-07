@@ -29,11 +29,11 @@ namespace UbiWorkshop
 			// singleton pattern
 			static Storage* GetInstance() noexcept;
 
-			const std::list<std::shared_ptr<Vehicle>> getVehicles() const noexcept;
+			const std::list<Vehicle*> GetVehicles() const noexcept;
 
 		private:
 			std::shared_ptr<Player> m_player;
-			std::list<std::shared_ptr<Vehicle>> m_vehicles;
+			std::list<std::unique_ptr<Vehicle>> m_vehicles;
 
 			// singleton
 			static std::shared_ptr<Storage> _instance;

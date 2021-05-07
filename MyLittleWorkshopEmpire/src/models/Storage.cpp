@@ -41,7 +41,7 @@ namespace UbiWorkshop
 			m_player->InitTool(ToolManager::GetInstance()->FindToolByName("Hammer"));
 
 			// init first vehicle
-			auto motorCycle = std::make_shared<Vehicle>("Motorcycle");
+			auto motorCycle = std::make_unique<Vehicle>("Motorcycle");
 
 			std::list<Tool*> requiredTools;
 			requiredTools.push_back(ToolManager::GetInstance()->FindToolByName("Jack"));
@@ -64,7 +64,7 @@ namespace UbiWorkshop
 			motorCycle->AddMalfunction(std::move(tempMalfunction));
 
 			// init second vehicle
-			auto compactCar = std::make_shared<Vehicle>("Compact car");
+			auto compactCar = std::make_unique<Vehicle>("Compact car");
 
 			requiredTools.clear();
 			requiredTools.push_back(ToolManager::GetInstance()->FindToolByName("Hammer"));
@@ -96,7 +96,7 @@ namespace UbiWorkshop
 			compactCar->AddMalfunction(std::move(tempMalfunction));
 
 			// init third vehicle
-			auto racingCar = std::make_shared<Vehicle>("Racing car");
+			auto racingCar = std::make_unique<Vehicle>("Racing car");
 
 			requiredTools.clear();
 			requiredTools.push_back(ToolManager::GetInstance()->FindToolByName("Screwdriver"));
@@ -126,9 +126,9 @@ namespace UbiWorkshop
 			tempMalfunction = std::make_unique<Malfunction>("Bumper damaged", requiredTools, 6);
 			racingCar->AddMalfunction(std::move(tempMalfunction));
 
-			m_vehicles.push_back(motorCycle);
-			m_vehicles.push_back(compactCar);
-			m_vehicles.push_back(racingCar);
+			m_vehicles.push_back(std::move(motorCycle));
+			m_vehicles.push_back(std::move(compactCar));
+			m_vehicles.push_back(std::move(racingCar));
 		}
 
 		Player* Storage::getPlayer() const noexcept
@@ -145,9 +145,15 @@ namespace UbiWorkshop
 			return _instance.get();
 		}
 
-		const std::list<std::shared_ptr<Vehicle>> Storage::getVehicles() const noexcept
+		const std::list<Vehicle*> Storage::GetVehicles() const noexcept
 		{
-			return m_vehicles;
+			std::list<Vehicle*> vehicles;
+
+			for (auto& v : m_vehicles) {
+				vehicles.push_back(v.get());
+			}
+
+			return vehicles;
 		}
 	}
 }
