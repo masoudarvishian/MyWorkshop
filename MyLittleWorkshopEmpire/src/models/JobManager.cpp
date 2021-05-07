@@ -3,7 +3,7 @@ namespace UbiWorkshop
 {
 	namespace Models
 	{
-		std::shared_ptr<JobManager> JobManager::_instance{ nullptr };
+		std::unique_ptr<JobManager> JobManager::_instance{ nullptr };
 
 		JobManager::~JobManager()
 		{
@@ -14,7 +14,7 @@ namespace UbiWorkshop
 		{
 			if (_instance == nullptr)
 			{
-				_instance = std::make_shared<JobManager>();
+				_instance = std::make_unique<JobManager>();
 
 				std::cout << "JobManager is created!\n";
 			}

@@ -41,7 +41,7 @@ namespace UbiWorkshop
 			std::vector<std::unique_ptr<Job>> m_jobs;
 
 			// singleton
-			static std::shared_ptr<JobManager> _instance;
+			static std::unique_ptr<JobManager> _instance;
 		};
 	}
 }
