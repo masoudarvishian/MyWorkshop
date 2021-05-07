@@ -12,11 +12,9 @@ namespace UbiWorkshop
 				auto tools = m_shopViewModel->getTools();
 
 				printf("  Shop content:\n");
-				for (auto iter(tools.begin()); iter != tools.end(); iter++)
+				for (auto& tool : tools)
 				{
-					auto tool{ iter->get() };
-
-					printf("  - #%d %s (%d$)\n", tool->GetId(), tool->GetName().c_str(), tool->GetPrice());
+					printf("  - #%d %s (%d$)\n", tool.id, tool.name.c_str(), tool.price);
 				}
 
 				callback();

@@ -26,16 +26,16 @@ namespace UbiWorkshop
 			// singleton pattern
 			static ToolManager* GetInstance() noexcept;
 
-			void AddTool(std::shared_ptr<Tool> tool);
+			void AddTool(std::unique_ptr<Tool> tool);
 
-			Tool* FindToolByName(std::string name) const;
+			Tool* FindToolByName(std::string name);
 
 			Tool* GetToolById(int toolIndex);
 
-			const std::vector<std::shared_ptr<Tool>> getTools() const noexcept;
+			const std::vector<Tool*> getTools() const noexcept;
 
 		private:
-			std::vector<std::shared_ptr<Tool>> m_tools;
+			std::vector<std::unique_ptr<Tool>> m_tools;
 
 			// singleton
 			static std::shared_ptr<ToolManager> _instance;

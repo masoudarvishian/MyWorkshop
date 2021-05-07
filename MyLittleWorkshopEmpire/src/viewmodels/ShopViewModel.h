@@ -15,9 +15,16 @@ namespace UbiWorkshop
 		class ShopViewModel
 		{
 		public:
+
+			struct ToolViewModel {
+				std::string name;
+				int price;
+				int id;
+			};
+
 			ShopViewModel() { printf("ShopViewModel is created!\n"); }
 			~ShopViewModel() { printf("ShopViewModel is destroyed!\n"); }
-			const std::vector<std::shared_ptr<Tool>> getTools() const noexcept;
+			const std::vector<ToolViewModel> getTools() const noexcept;
 		};
 	}
 }

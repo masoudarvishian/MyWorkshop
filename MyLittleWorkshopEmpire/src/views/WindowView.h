@@ -36,7 +36,7 @@ namespace UbiWorkshop
 		private:
 			void ErrorPopup(const std::string& errMsg) noexcept;
 			void DisplayInventory(const ImGuiWindowFlags& window_flags) const noexcept;
-			void DisplayStore(const ImGuiWindowFlags& window_flags, const std::vector<std::shared_ptr<Tool>>& shopTools) noexcept;
+			void DisplayStore(const ImGuiWindowFlags& window_flags, const std::vector<ShopViewModel::ToolViewModel>& shopTools) noexcept;
 			void DisplayJobs(const ImGuiWindowFlags& window_flags, std::vector<JobViewModel>& jobs) noexcept;
 
 			bool m_displayErrorPopup{ false };

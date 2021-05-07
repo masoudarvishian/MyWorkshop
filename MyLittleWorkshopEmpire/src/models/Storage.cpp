@@ -16,12 +16,24 @@ namespace UbiWorkshop
 			m_player = std::make_shared<Player>();
 
 			// init tools
-			ToolManager::GetInstance()->AddTool(std::make_shared<Tool>("Jack", 50));
-			ToolManager::GetInstance()->AddTool(std::make_shared<Tool>("Torque brace", 40));
-			ToolManager::GetInstance()->AddTool(std::make_shared<Tool>("Jumper Cables", 20));
-			ToolManager::GetInstance()->AddTool(std::make_shared<Tool>("Phase tester", 10));
-			ToolManager::GetInstance()->AddTool(std::make_shared<Tool>("Hammer", 20));
-			ToolManager::GetInstance()->AddTool(std::make_shared<Tool>("Screwdriver", 10));
+
+			auto tempTool = std::make_unique<Tool>("Jack", 50);
+			ToolManager::GetInstance()->AddTool(std::move(tempTool));
+
+			tempTool = std::make_unique<Tool>("Torque brace", 40);
+			ToolManager::GetInstance()->AddTool(std::move(tempTool));
+
+			tempTool = std::make_unique<Tool>("Jumper Cables", 20);
+			ToolManager::GetInstance()->AddTool(std::move(tempTool));
+
+			tempTool = std::make_unique<Tool>("Phase tester", 10);
+			ToolManager::GetInstance()->AddTool(std::move(tempTool));
+
+			tempTool = std::make_unique<Tool>("Hammer", 20);
+			ToolManager::GetInstance()->AddTool(std::move(tempTool));
+
+			tempTool = std::make_unique<Tool>("Screwdriver", 10);
+			ToolManager::GetInstance()->AddTool(std::move(tempTool));
 
 			// init players tools
 			m_player->InitTool(ToolManager::GetInstance()->FindToolByName("Jack"));

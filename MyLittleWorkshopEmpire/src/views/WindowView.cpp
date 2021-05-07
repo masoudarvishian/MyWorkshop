@@ -61,7 +61,7 @@ namespace UbiWorkshop
 			/// first init of displaying values ///
 			m_inventoryViewModel->UpdateInventory();
 
-			std::vector<std::shared_ptr<Tool>> shopTools;
+			std::vector<ShopViewModel::ToolViewModel> shopTools;
 			{ // get shop tools
 				auto m_shopViewModel = std::make_unique<ShopViewModel>();
 				shopTools = m_shopViewModel->getTools();
@@ -161,7 +161,7 @@ namespace UbiWorkshop
 			ImGui::End();
 		}
 
-		void WindowView::DisplayStore(const ImGuiWindowFlags& window_flags, const std::vector<std::shared_ptr<Tool>>& shopTools) noexcept
+		void WindowView::DisplayStore(const ImGuiWindowFlags& window_flags, const std::vector<ShopViewModel::ToolViewModel>& shopTools) noexcept
 		{
 			ImGui::SetNextWindowSize(ImVec2(300, 240));
 			ImGui::Begin("Store", NULL, window_flags);
@@ -170,11 +170,11 @@ namespace UbiWorkshop
 			// show tools
 			for (auto i = 0; i < shopTools.size(); ++i)
 			{
-				auto label = "Buy##" + std::to_string(shopTools[i]->GetId());
+				auto label = "Buy##" + std::to_string(shopTools[i].id);
 				if (ImGui::Button(label.c_str()))
 				{
 					// add a command to buy the tool
-					auto command = std::make_unique<WBuyToolCommand>(shopTools[i]->GetId(),
+					auto command = std::make_unique<WBuyToolCommand>(shopTools[i].id,
 						[&]() { // on success
 							m_inventoryViewModel->UpdateInventory();
 						}
@@ -183,9 +183,9 @@ namespace UbiWorkshop
 					m_cmdManager->add(std::move(command));
 				}
 				ImGui::SameLine();
-				std::string toolStr = "Tool: " + shopTools[i]->GetName() + ", Price: " + std::to_string(shopTools[i]->GetPrice()) + '$';
+				std::string toolStr = "Tool: " + shopTools[i].name + ", Price: " + std::to_string(shopTools[i].price) + '$';
 
-				if (m_inventoryViewModel->GetMoney() >= shopTools[i]->GetPrice())
+				if (m_inventoryViewModel->GetMoney() >= shopTools[i].price)
 				{
 					ImGui::Text(toolStr.c_str());
 				}

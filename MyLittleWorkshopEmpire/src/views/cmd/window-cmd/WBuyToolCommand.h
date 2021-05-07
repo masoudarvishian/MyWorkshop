@@ -1,7 +1,7 @@
 #ifndef W_BUY_TOOL_COMMAND_H
 #define W_BUY_TOOL_COMMAND_H
 
-#include <functional>;
+#include <functional>
 #include "../Command.h"
 #include "../../../viewmodels/PlayerViewModel.h"
 #include "../../../viewmodels/InventoryViewModel.h"

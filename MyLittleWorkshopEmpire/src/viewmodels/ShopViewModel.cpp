@@ -4,9 +4,27 @@ namespace UbiWorkshop
 {
 	namespace ViewModels
 	{
-		const std::vector<std::shared_ptr<Tool>> ShopViewModel::getTools() const noexcept
+		const std::vector<ShopViewModel::ToolViewModel> ShopViewModel::getTools() const noexcept
 		{
-			return ToolManager::GetInstance()->getTools();
+			std::vector<ShopViewModel::ToolViewModel> output;
+
+			// map data to viewmodel
+			auto tools = ToolManager::GetInstance()->getTools();
+			for (auto& t : tools) {
+				
+				if (!t) {
+					continue;
+				}
+
+				ShopViewModel::ToolViewModel temp;
+				temp.id = t->GetId();
+				temp.name = t->GetName();
+				temp.price = t->GetPrice();
+
+				output.push_back(temp);
+			}
+
+			return output;
 		}
 	}
 }
