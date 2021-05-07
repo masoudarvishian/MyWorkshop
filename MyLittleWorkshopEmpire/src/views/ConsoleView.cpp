@@ -43,19 +43,22 @@ namespace UbiWorkshop
 				case 'h':   // help, listing all commands
 				{
 					// a command for help option
-					m_cmdManager->add(std::make_shared<HelpCommand>());
+					auto cmd = std::make_unique<HelpCommand>();
+					m_cmdManager->add(std::move(cmd));
 				}
 				break;
 				case 'i':   // inventory
 				{
 					// a command for inventory option
-					m_cmdManager->add(std::make_shared<InventoryCommand>());
+					auto cmd = std::make_unique<InventoryCommand>();
+					m_cmdManager->add(std::move(cmd));
 				}
 				break;
 				case 'j':   // jobs
 				{
 					// command for displaying jobs
-					m_cmdManager->add(std::make_unique<DisplayJobsCommand>());
+					auto cmd = std::make_unique<DisplayJobsCommand>();
+					m_cmdManager->add(std::move(cmd));
 				}
 				break;
 				case 'a':   // accept job
@@ -73,7 +76,8 @@ namespace UbiWorkshop
 				case 's':   // shop
 				{
 					// a command for shop option
-					m_cmdManager->add(std::make_shared<ShopCommand>());
+					auto cmd = std::make_unique<ShopCommand>();
+					m_cmdManager->add(std::move(cmd));
 				}
 				break;
 				case 'b':   // buy tool
@@ -85,7 +89,8 @@ namespace UbiWorkshop
 					}
 
 					// a command for buy tool option
-					m_cmdManager->add(std::make_shared<BuyToolCommand>(id));
+					auto cmd = std::make_unique<BuyToolCommand>(id);
+					m_cmdManager->add(std::move(cmd));
 				}
 				break;
 				case 'x':   // quit game

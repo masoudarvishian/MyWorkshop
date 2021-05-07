@@ -8,7 +8,9 @@ namespace UbiWorkshop
 		{
 			WBuyToolCommand::WBuyToolCommand(int toolId, std::function<void()> onSuccess)
 				: m_toolId{ toolId }, m_onSuccess{onSuccess}
-			{}
+			{
+				printf("WBuyToolCommand is created!\n");
+			}
 
 			void WBuyToolCommand::execute(std::function<void()> callback)
 			{

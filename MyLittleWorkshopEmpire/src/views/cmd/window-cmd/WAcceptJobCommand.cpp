@@ -10,6 +10,7 @@ namespace UbiWorkshop
 				bool* displayErrPopup, std::function<void()> onSuccess)
 				: m_jobId{ jobId }, m_jobs{ jobs }, m_errorMsg{ errorMsg }, m_displayErrPopup{ displayErrPopup }, m_onSuccess { onSuccess }
 			{
+				printf("WAcceptJobCommand is created!\n");
 			}
 
 			void WAcceptJobCommand::execute(std::function<void()> callback)

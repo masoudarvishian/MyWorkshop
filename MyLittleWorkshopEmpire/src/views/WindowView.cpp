@@ -174,13 +174,13 @@ namespace UbiWorkshop
 				if (ImGui::Button(label.c_str()))
 				{
 					// add a command to buy the tool
-					auto command = std::make_shared<WBuyToolCommand>(shopTools[i]->GetId(),
+					auto command = std::make_unique<WBuyToolCommand>(shopTools[i]->GetId(),
 						[&]() { // on success
 							m_inventoryViewModel->UpdateInventory();
 						}
 					);
 
-					m_cmdManager->add(command);
+					m_cmdManager->add(std::move(command));
 				}
 				ImGui::SameLine();
 				std::string toolStr = "Tool: " + shopTools[i]->GetName() + ", Price: " + std::to_string(shopTools[i]->GetPrice()) + '$';
@@ -211,7 +211,7 @@ namespace UbiWorkshop
 				if (ImGui::Button(label.c_str()))
 				{
 					// add a command to complete the job
-					auto command = std::make_shared<WAcceptJobCommand>(jobs[i].id,
+					auto command = std::make_unique<WAcceptJobCommand>(jobs[i].id,
 						jobs, &m_errorMsg, &m_displayErrorPopup,
 						[&]() { // on success
 							auto displayJobsViewModel = std::make_unique<DisplayJobsViewModel>();
@@ -221,7 +221,7 @@ namespace UbiWorkshop
 						}
 					);
 
-					m_cmdManager->add(command);
+					m_cmdManager->add(std::move(command));
 
 					break;
 				}

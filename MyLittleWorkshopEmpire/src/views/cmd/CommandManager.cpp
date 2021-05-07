@@ -5,9 +5,9 @@ CommandManager::~CommandManager()
 	std::cout << "CommandManager is destroyed!\n";
 }
 
-void CommandManager::add(std::shared_ptr<Command> cmd) noexcept
+void CommandManager::add(std::unique_ptr<Command> cmd) noexcept
 {
-	m_queue.push(cmd);
+	m_queue.push(std::move(cmd));
 
 	if (!m_isPending)
 	{
@@ -22,7 +22,7 @@ void CommandManager::doNext() noexcept
 		return;
 	}
 
-	auto cmd = m_queue.back();
+	auto cmd = std::move(m_queue.back());
 	m_queue.pop();
 	m_isPending = true;
 	cmd->execute([this]() { 

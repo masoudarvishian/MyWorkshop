@@ -12,14 +12,14 @@ public:
 	CommandManager() {}
 	~CommandManager();
 
-	void add(std::shared_ptr<Command> cmd) noexcept;
+	void add(std::unique_ptr<Command> cmd) noexcept;
 
 private:
 	void doNext() noexcept;
 	void cleanUp() noexcept;
 
 	bool m_isPending{ false };
-	std::queue<std::shared_ptr<Command>> m_queue;
+	std::queue<std::unique_ptr<Command>> m_queue;
 };
 
 #endif
