@@ -4,11 +4,10 @@ namespace UbiWorkshop
 {
 	namespace Models
 	{
-		std::shared_ptr<ToolManager> ToolManager::_instance{ nullptr };
+		std::unique_ptr<ToolManager> ToolManager::_instance{ nullptr };
 
 		ToolManager::~ToolManager()
 		{
-			_instance = nullptr;
 			std::cout << "ToolManager is destroyed!\n";
 		}
 
@@ -16,7 +15,7 @@ namespace UbiWorkshop
 		{
 			if (_instance == nullptr)
 			{
-				_instance = std::make_shared<ToolManager>();
+				_instance = std::make_unique<ToolManager>();
 			}
 			return _instance.get();
 		}

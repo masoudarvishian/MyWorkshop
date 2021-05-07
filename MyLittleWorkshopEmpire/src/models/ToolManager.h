@@ -38,7 +38,7 @@ namespace UbiWorkshop
 			std::vector<std::unique_ptr<Tool>> m_tools;
 
 			// singleton
-			static std::shared_ptr<ToolManager> _instance;
+			static std::unique_ptr<ToolManager> _instance;
 		};
 	}
 }
