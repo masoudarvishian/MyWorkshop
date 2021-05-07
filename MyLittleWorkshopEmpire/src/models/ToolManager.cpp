@@ -16,6 +16,7 @@ namespace UbiWorkshop
 			if (_instance == nullptr)
 			{
 				_instance = std::make_unique<ToolManager>();
+				std::cout << "ToolManager is created!\n";
 			}
 			return _instance.get();
 		}

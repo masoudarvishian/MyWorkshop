@@ -36,7 +36,7 @@ namespace UbiWorkshop
 			std::list<std::unique_ptr<Vehicle>> m_vehicles;
 
 			// singleton
-			static std::shared_ptr<Storage> _instance;
+			static std::unique_ptr<Storage> _instance;
 		};
 	}
 }

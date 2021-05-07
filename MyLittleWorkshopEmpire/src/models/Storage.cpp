@@ -4,7 +4,7 @@ namespace UbiWorkshop
 {
 	namespace Models
 	{
-		std::shared_ptr<Storage> Storage::_instance{ nullptr };
+		std::unique_ptr<Storage> Storage::_instance{ nullptr };
 
 		Storage::~Storage()
 		{
@@ -140,7 +140,8 @@ namespace UbiWorkshop
 		{
 			if (_instance == nullptr)
 			{
-				_instance = std::make_shared<Storage>();
+				_instance = std::make_unique<Storage>();
+				std::cout << "Storage is created!\n";
 			}
 			return _instance.get();
 		}
