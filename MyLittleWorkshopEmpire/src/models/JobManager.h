@@ -29,16 +29,16 @@ namespace UbiWorkshop
 			// singleton pattern
 			static JobManager* GetInstance() noexcept;
 
-			void AddJob(std::shared_ptr<Job> job) noexcept;
+			void AddJob(std::unique_ptr<Job> job) noexcept;
 			void RemoveJob(int jobId) noexcept;
-			const std::vector<std::shared_ptr<Job>> GetJobs() const noexcept;
+			const std::vector<Job*> GetJobs() const noexcept;
 			bool AcceptJob(int jobId) noexcept;
 
 		private:
 
 			Job* FindJob(int jobId) const noexcept;
 
-			std::vector<std::shared_ptr<Job>> m_jobs;
+			std::vector<std::unique_ptr<Job>> m_jobs;
 
 			// singleton
 			static std::shared_ptr<JobManager> _instance;

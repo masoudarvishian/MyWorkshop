@@ -28,8 +28,8 @@ namespace UbiWorkshop
             {
                 toolsIdName[tool->GetId()] = tool->GetName();
             }
-            auto job = std::make_shared<Job>(m_id, value->GetId(), m_type, value->GetName(), value->GetRewardAmount(), toolsIdName);
-            JobManager::GetInstance()->AddJob(job);
+            auto job = std::make_unique<Job>(m_id, value->GetId(), m_type, value->GetName(), value->GetRewardAmount(), toolsIdName);
+            JobManager::GetInstance()->AddJob(std::move(job));
         }
 
         void Vehicle::RemoveMalfunction(int malfunctionId) noexcept

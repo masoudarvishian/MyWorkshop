@@ -19,14 +19,14 @@ namespace UbiWorkshop
 			return _instance.get();
 		}
 
-		void JobManager::AddJob(std::shared_ptr<Job> job) noexcept
+		void JobManager::AddJob(std::unique_ptr<Job> job) noexcept
 		{
-			m_jobs.push_back(job);
+			m_jobs.push_back(std::move(job));
 		}
 
 		void JobManager::RemoveJob(int jobId) noexcept
 		{
-			auto search = std::find_if(m_jobs.begin(), m_jobs.end(), [&jobId](std::shared_ptr<Job>& j) {
+			auto search = std::find_if(m_jobs.begin(), m_jobs.end(), [&jobId](std::unique_ptr<Job>& j) {
 				return jobId == j.get()->GetId();
 				});
 
@@ -37,9 +37,15 @@ namespace UbiWorkshop
 			}
 		}
 
-		const std::vector<std::shared_ptr<Job>> JobManager::GetJobs() const noexcept
+		const std::vector<Job*> JobManager::GetJobs() const noexcept
 		{
-			return m_jobs;
+			std::vector<Job*> jobs;
+
+			for (auto& j : m_jobs) {
+				jobs.push_back(j.get());
+			}
+
+			return jobs;
 		}
 
 		bool JobManager::AcceptJob(int jobId) noexcept
@@ -122,14 +128,15 @@ namespace UbiWorkshop
 			Job* job{ nullptr };
 
 			auto allJobs = GetJobs();
-			auto search = std::find_if(allJobs.begin(), allJobs.end(), [&jobId](std::shared_ptr<Job>& j) {
+			auto search = std::find_if(allJobs.begin(), allJobs.end(), [&jobId](Job* j) 
+			{
 				return j->GetId() == jobId;
-				});
+			});
 
 			if (search != allJobs.end())
 			{
 				auto index = std::distance(allJobs.begin(), search);
-				job = allJobs.at(index).get();
+				job = allJobs.at(index);
 			}
 
 			return job;
